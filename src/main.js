@@ -8,8 +8,8 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-Vue.component('Nav', Nav);
-Vue.component('Footer', Footer);
+Vue.component('Nav', Nav)
+Vue.component('Footer', Footer)
 
 /* eslint-disable no-new */
 new Vue({

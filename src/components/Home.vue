@@ -19,18 +19,18 @@
 import Nav from './Nav.vue'
 import FeedSnap from './FeedSnap.vue'
 
-  export default {
+export default {
 
-    components: {
-      'Nav': Nav,
-      'FeedSnap': FeedSnap,
-    },
-    data () {
-      return {
-        topSnaps: ['funny cat', 'funny dog', 'funny dude'],
-      }
+  components: {
+    'Nav': Nav,
+    'FeedSnap': FeedSnap
+  },
+  data () {
+    return {
+      topSnaps: ['funny cat', 'funny dog', 'funny dude']
     }
   }
+}
 </script>
 
 <style scoped>
