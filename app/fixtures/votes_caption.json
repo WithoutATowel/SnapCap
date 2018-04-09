@@ -1,6 +1,6 @@
 [
 {
-    "model": "snapcapapp.vote_caption",
+    "model": "app.vote_caption",
     "pk": 1,
     "fields": {
         "user": 7,
@@ -8,7 +8,7 @@
     }
 },
 {
-    "model": "snapcapapp.vote_caption",
+    "model": "app.vote_caption",
     "pk": 2,
     "fields": {
         "user": 5,

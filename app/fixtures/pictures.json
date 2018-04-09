@@ -1,6 +1,6 @@
 [
 {
-    "model": "snapcapapp.picture",
+    "model": "app.picture",
     "pk": 1,
     "fields": {
         "user": 7,
@@ -9,7 +9,7 @@
     }
 },
 {
-    "model": "snapcapapp.picture",
+    "model": "app.picture",
     "pk": 2,
     "fields": {
         "user": 6,
@@ -18,7 +18,7 @@
     }
 },
 {
-    "model": "snapcapapp.picture",
+    "model": "app.picture",
     "pk": 3,
     "fields": {
         "user": 5,

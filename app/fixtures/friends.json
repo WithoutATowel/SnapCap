@@ -1,6 +1,6 @@
 [
 {
-    "model": "snapcapapp.friendship",
+    "model": "app.friendship",
     "pk": 1,
     "fields": {
         "user": 7,
@@ -9,7 +9,7 @@
     }
 },
 {
-    "model": "snapcapapp.friendship",
+    "model": "app.friendship",
     "pk": 2,
     "fields": {
         "user": 6,
@@ -18,7 +18,7 @@
     }
 },
 {
-    "model": "snapcapapp.friendship",
+    "model": "app.friendship",
     "pk": 3,
     "fields": {
         "user": 6,
@@ -27,7 +27,7 @@
     }
 },
 {
-    "model": "snapcapapp.friendship",
+    "model": "app.friendship",
     "pk": 4,
     "fields": {
         "user": 5,

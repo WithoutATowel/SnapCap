@@ -22,7 +22,7 @@
     "pk": 5,
     "fields": {
         "password": "pbkdf2_sha256$100000$dVBopbN2tJj1$PtcOduPiBKoE2a+flwyGb87ECth3JsvmE+k0c26wAyg=",
-        "last_login": null,
+        "last_login": "2018-04-08T20:25:40.242Z",
         "is_superuser": false,
         "username": "sean.cesmat@gmail.com",
         "first_name": "",
@@ -40,7 +40,7 @@
     "pk": 6,
     "fields": {
         "password": "pbkdf2_sha256$100000$vY8wJqQOlBXk$EUfNOD2uLzYIFrzCDPflOCUGcrXuRHqq0o31WUSyfnk=",
-        "last_login": null,
+        "last_login": "2018-04-08T20:26:01.640Z",
         "is_superuser": false,
         "username": "scrosehart@gmail.com",
         "first_name": "",
@@ -58,7 +58,7 @@
     "pk": 7,
     "fields": {
         "password": "pbkdf2_sha256$100000$Ux9j6u9WhrX2$hJVNX+dfrS3vPj3qjRDSP0/JMTds6nP1Xdz7tx8vuu0=",
-        "last_login": null,
+        "last_login": "2018-04-08T20:26:12.778Z",
         "is_superuser": false,
         "username": "brettspencr@gmail.com",
         "first_name": "",
