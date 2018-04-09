@@ -6,6 +6,33 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 import requests
+from rest_framework import viewsets
+from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, FriendshipSerializer
+
+class ProfileView(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+class PictureView(viewsets.ModelViewSet):
+    queryset = Picture.objects.all()
+    serializer_class = PictureSerializer
+
+class UsercapView(viewsets.ModelViewSet):
+    queryset = Usercap.objects.all()
+    serializer_class = UsercapSerializer
+
+class Vote_PictureView(viewsets.ModelViewSet):
+    queryset = Vote_Picture.objects.all()
+    serializer_class = Vote_PictureSerializer
+
+class Vote_CaptionView(viewsets.ModelViewSet):
+    queryset = Vote_Caption.objects.all()
+    serializer_class = Vote_CaptionSerializer
+
+class FriendshipView(viewsets.ModelViewSet):
+    queryset = Friendship.objects.all()
+    serializer_class = FriendshipSerializer
+
 
 # Create your views here.
 
