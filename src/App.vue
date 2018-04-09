@@ -1,15 +1,7 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
-    <br>
-    <img class="logo" src="./assets/dj.png">
-    <a href='/#/'>Main</a>
-    <br />
-    <a href='/#/goodbye'>Goodbye</a>
+    <Nav />
     <router-view/>
-    <p>
-      Welcome to your Django - Vue.js app!
-    </p>
   </div>
 </template>
 
