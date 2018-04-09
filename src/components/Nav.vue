@@ -1,10 +1,22 @@
 <template>
-  <div class="hello">
-    <Logged />
-    <a href='/#/'>Home</a>
-    <br />
-    <a href='/#/snaps'>Snap Show</a>
-    <Search />
+  <div class="nav">
+    <nav>
+      <div class="row">
+        <div class="col s4">
+          <Logged />
+        </div>
+        <div class="col s4">
+          <h5>SnapCap</h5>
+        </div>
+        <div class="col s4">
+          <a href='/#/'>Home</a>
+          <a href='/#/snaps'>Snap Show</a>
+          <Search />
+        </div>
+      </div>
+    </nav>
+
+
   </div>
 </template>
 
@@ -34,5 +46,11 @@ export default {
 <style scoped>
 h1 {
   color: #42b983;
+}
+.search-cont {
+  display: inline-block;
+}
+a {
+  margin: 0 10px;
 }
 </style>

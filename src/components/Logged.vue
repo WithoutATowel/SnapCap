@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>Login/Signup</p>
-    <p>{{ user }}</p>
+    <p>Login/Signup | {{ user }}</p>
   </div>
 </template>
 
@@ -18,5 +17,8 @@
 <style scoped>
   h2 {
     color: red
+  }
+  p {
+    margin: 0px;
   }
 </style>
