@@ -9,7 +9,8 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "both": "npm run dev | python3 manage.py runserver"
   },
   "dependencies": {
     "vue": "^2.5.2",
