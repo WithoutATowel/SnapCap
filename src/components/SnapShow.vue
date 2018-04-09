@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="snap-show">
     <p>Img goes here!!!!!!</p>
     <!-- <div v-for='cap in captions' :key='caption.id'> -->
     <div v-for='cap in captions'>
@@ -33,10 +33,16 @@ body {
   justify-content: center;
 }
 
+.snap-show {
+  padding: 1em;
+  background-color: rgba(38, 232, 156, .4);
+}
+
 .caption {
   margin: 2em;
   padding: .3em 1.5em;
-  background: #eee;
+  background: #FFD216;
+  color: white;
 }
 
 </style>

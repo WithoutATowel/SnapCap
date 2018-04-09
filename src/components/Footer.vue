@@ -1,11 +1,12 @@
 <template>
-  <div class="hello">
+  <footer>
     <p>SnapCap &copy; 2018. All Rights Reserved.</p>
-  </div>
+  </footer>
 </template>
 
 <style scoped>
-h1 {
-  color: #42b983;
+footer {
+  background: #730046;
+  color: white;
 }
 </style>

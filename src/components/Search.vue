@@ -15,7 +15,14 @@ export default {
 </script>
 
 <style scoped>
-  h2 {
-    color: red
-  }
+
+input {
+  color: #730046;
+  font-weight: bold;
+}
+
+/* input:placeholder-shown {
+  color: blue;
+} */
+
 </style>

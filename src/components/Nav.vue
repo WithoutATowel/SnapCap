@@ -8,7 +8,7 @@
         <div class="col s4">
           <h5>SnapCap</h5>
         </div>
-        <div class="col s4">
+        <div class="links col s4">
           <a href='/#/'>Home</a>
           <a href='/#/snaps'>Snap Show</a>
           <a href='/#/profile'>Profile</a>
@@ -46,13 +46,30 @@ export default {
 h1 {
   color: #42b983;
 }
-.search-cont {
-  display: inline-block;
-}
+
 a {
   margin: 0 10px;
 }
 .col {
   text-align: center;
 }
+
+nav {
+  background-color: #26E89C;
+  box-shadow: none;
+}
+
+a {
+  padding: .2em .1em;
+  color: white !important;
+}
+
+a:hover {
+  border-bottom: 2px solid #FFD216;
+}
+
+.search-cont {
+  display: inline-block;
+}
+
 </style>
