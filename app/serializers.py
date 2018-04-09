@@ -6,7 +6,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('id', 'user', 'profile_img')
 
-
 class PictureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Picture

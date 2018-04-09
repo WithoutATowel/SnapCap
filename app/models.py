@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,15 +16,17 @@ class Profile(models.Model):
     profile_img = models.CharField(max_length=1000)
 
 CATEGORY = (
-    (0, 'Animals'),
-    (1, 'Humans'),
-    (2, 'Other'),
+    ('animals', 'animals'),
+    ('cats', 'cats'),
+    ('dogs', 'dogs'),
+    ('sports', 'sports'),
+    ('hummus', 'hummus'),
 )
 
 class Picture(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cloudinary_url = models.CharField(max_length=1000)
-    category = models.IntegerField(choices=CATEGORY)
+    category = models.CharField(max_length=20, choices=CATEGORY)
 
     def __str__(self):
         return self.cloudinary_url
