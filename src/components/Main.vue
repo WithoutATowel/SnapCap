@@ -9,7 +9,7 @@
     data () {
       return {
         friends: ['Scott', 'Sean', 'Brett'],
-        msg: 'Hello there',
+        msg: 'Hey there',
       }
     }
   }
