@@ -22,7 +22,7 @@ export default {
   methods: {
     getJokes: function () {
       // axios.get('http://api.icndb.com/jokes/random/10')
-      axios.get('/api/snaps')
+      axios.get('/api/api/snaps')
         .then((response) => {
           this.jokes = response.data.value
           console.log(response.data)
