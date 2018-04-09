@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <Nav />
-    <router-view/>
-    <Footer />
+    <header>
+      <Nav />
+    </header>
+    <main>
+      <router-view/>
+    </main>
+    <footer>
+      <Footer />
+    </footer>
     <button v-on:click="getJokes">Get Snaps</button>
     <p v-for='joke in jokes' :key='joke.id'>{{ joke.joke }}</p>
   </div>
@@ -42,6 +48,10 @@ body {
   /* align-items: center; */
   /* justify-content: center; */
   height: 100%;
+}
+
+main {
+  margin-top: 10px;
 }
 
 #app {

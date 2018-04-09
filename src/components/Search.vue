@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-cont">
     <input type='text' placeholder='search' />
   </div>
 </template>
