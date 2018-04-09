@@ -6,15 +6,17 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('id', 'user', 'profile_img')
 
-class PictureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Picture
-        fields = ('id', 'user', 'cloudinary_url', 'category')
-
 class UsercapSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usercap
         fields = ('id', 'user', 'picture', 'text', 'votes')
+
+class PictureSerializer(serializers.ModelSerializer):
+    usercaps = UsercapSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Picture
+        fields = ('id', 'user', 'cloudinary_url', 'category', 'usercaps')
 
 class Vote_PictureSerializer(serializers.ModelSerializer):
     class Meta:

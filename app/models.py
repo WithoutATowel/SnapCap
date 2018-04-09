@@ -33,9 +33,12 @@ class Picture(models.Model):
 
 class Usercap(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    picture = models.ForeignKey(Picture, on_delete=models.CASCADE)
+    picture = models.ForeignKey(Picture, related_name='usercaps', on_delete=models.CASCADE)
     text = models.CharField(max_length=140)
     votes = models.IntegerField()
+
+    def __unicode__(self):
+        return self.text
     
     def __str__(self):
         return self.text
