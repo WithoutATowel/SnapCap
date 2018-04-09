@@ -1,0 +1,32 @@
+[
+{
+    "model": "snapcapapp.usercap",
+    "pk": 1,
+    "fields": {
+        "user": 7,
+        "picture": 1,
+        "text": "Oh my!",
+        "votes": 0
+    }
+},
+{
+    "model": "snapcapapp.usercap",
+    "pk": 2,
+    "fields": {
+        "user": 6,
+        "picture": 3,
+        "text": "Here we go",
+        "votes": 0
+    }
+},
+{
+    "model": "snapcapapp.usercap",
+    "pk": 3,
+    "fields": {
+        "user": 5,
+        "picture": 2,
+        "text": "What the hell",
+        "votes": 0
+    }
+}
+]

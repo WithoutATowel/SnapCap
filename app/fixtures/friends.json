@@ -1,0 +1,38 @@
+[
+{
+    "model": "snapcapapp.friendship",
+    "pk": 1,
+    "fields": {
+        "user": 7,
+        "friend": 6,
+        "status": 1
+    }
+},
+{
+    "model": "snapcapapp.friendship",
+    "pk": 2,
+    "fields": {
+        "user": 6,
+        "friend": 5,
+        "status": 1
+    }
+},
+{
+    "model": "snapcapapp.friendship",
+    "pk": 3,
+    "fields": {
+        "user": 6,
+        "friend": 7,
+        "status": 1
+    }
+},
+{
+    "model": "snapcapapp.friendship",
+    "pk": 4,
+    "fields": {
+        "user": 5,
+        "friend": 6,
+        "status": 1
+    }
+}
+]

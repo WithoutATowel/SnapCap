@@ -4,8 +4,8 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # path('', views.index, name='index'),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', views.index, name='index'),
+    # url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     path('snaps/', views.snaps, name='snaps'),
     path('snaps/<int:snap_id>/', views.details, name='details'),
     path('snaps/friends/', views.friends, name='friends'),

@@ -10,6 +10,7 @@ import requests
 # Create your views here.
 
 def index(request):
+    print('okay')
     return render(request, 'index.html')
 
 def snaps(request):

@@ -1,0 +1,74 @@
+[
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$ExOa1PoTHqoI$Vxupf/Knrxz2vuBSRa0dLZ56OZTiejMq7aLm3ZoqMjY=",
+        "last_login": "2018-04-08T20:23:45.139Z",
+        "is_superuser": true,
+        "username": "brettspencer",
+        "first_name": "",
+        "last_name": "",
+        "email": "brettspencr@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2018-04-08T20:23:35.792Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$dVBopbN2tJj1$PtcOduPiBKoE2a+flwyGb87ECth3JsvmE+k0c26wAyg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "sean.cesmat@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-04-08T20:25:40.242Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$vY8wJqQOlBXk$EUfNOD2uLzYIFrzCDPflOCUGcrXuRHqq0o31WUSyfnk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "scrosehart@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-04-08T20:26:01.640Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$100000$Ux9j6u9WhrX2$hJVNX+dfrS3vPj3qjRDSP0/JMTds6nP1Xdz7tx8vuu0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "brettspencr@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-04-08T20:26:12.778Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

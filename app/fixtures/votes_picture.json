@@ -1,0 +1,26 @@
+[
+{
+    "model": "snapcapapp.vote_picture",
+    "pk": 1,
+    "fields": {
+        "user": 7,
+        "picture": 2
+    }
+},
+{
+    "model": "snapcapapp.vote_picture",
+    "pk": 2,
+    "fields": {
+        "user": 6,
+        "picture": 3
+    }
+},
+{
+    "model": "snapcapapp.vote_picture",
+    "pk": 3,
+    "fields": {
+        "user": 5,
+        "picture": 1
+    }
+}
+]

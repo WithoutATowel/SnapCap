@@ -1,0 +1,29 @@
+[
+{
+    "model": "snapcapapp.picture",
+    "pk": 1,
+    "fields": {
+        "user": 7,
+        "cloudinary_url": "https://i.redd.it/16mwzwon9pq01.jpg",
+        "category": 0
+    }
+},
+{
+    "model": "snapcapapp.picture",
+    "pk": 2,
+    "fields": {
+        "user": 6,
+        "cloudinary_url": "https://i.imgur.com/RV3ijwy.gifv",
+        "category": 1
+    }
+},
+{
+    "model": "snapcapapp.picture",
+    "pk": 3,
+    "fields": {
+        "user": 5,
+        "cloudinary_url": "https://i.redd.it/rnq4gfh1ipq01.jpg",
+        "category": 2
+    }
+}
+]
