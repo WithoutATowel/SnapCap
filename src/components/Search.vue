@@ -5,13 +5,13 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        data: 'NO DATA',
-      }
+export default {
+  data () {
+    return {
+      data: 'NO DATA'
     }
   }
+}
 </script>
 
 <style scoped>

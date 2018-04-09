@@ -10,16 +10,16 @@
 
 import Vote from './Vote.vue'
 
-  export default {
-    components: {
-      'Vote': Vote,
-    },
-    data () {
-      return {
-        data: 'NO DATA',
-      }
+export default {
+  components: {
+    'Vote': Vote
+  },
+  data () {
+    return {
+      data: 'NO DATA'
     }
   }
+}
 </script>
 
 <style scoped>

@@ -16,7 +16,7 @@ import Search from './Search.vue'
 export default {
   components: {
     'Logged': Logged,
-    'Search': Search,
+    'Search': Search
   },
   data () {
     return {
