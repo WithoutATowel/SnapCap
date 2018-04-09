@@ -13,11 +13,11 @@ import Caption from './Caption.vue'
 
 export default {
   components: {
-    'Caption': Caption,
+    'Caption': Caption
   },
   data () {
     return {
-      captions: ['funny cat', 'funny dog', 'funny dude'],
+      captions: ['funny cat', 'funny dog', 'funny dude']
     }
   }
 }
