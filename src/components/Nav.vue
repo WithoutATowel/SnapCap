@@ -11,6 +11,7 @@
         <div class="col s4">
           <a href='/#/'>Home</a>
           <a href='/#/snaps'>Snap Show</a>
+          <a href='/#/profile'>Profile</a>
           <Search />
         </div>
       </div>

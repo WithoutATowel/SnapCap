@@ -1,8 +1,9 @@
 <template>
   <div class="hello">
     <p>Img goes here!!!!!!</p>
+    <!-- <div v-for='cap in captions' :key='caption.id'> -->
     <div v-for='cap in captions'>
-      <Caption />
+      <Caption class='caption' v-bind:cap='cap' />
     </div>
   </div>
 </template>
@@ -25,7 +26,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  color: #42b983;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.caption {
+  margin: 2em;
+  padding: .3em 1.5em;
+  background: #eee;
+}
+
 </style>

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SnapShow from '@/components/SnapShow'
 import Home from '@/components/Home'
+import SnapShow from '@/components/SnapShow'
+import Profile from '@/components/Profile'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/snaps',
       name: 'SnapShow',
       component: SnapShow
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 })
