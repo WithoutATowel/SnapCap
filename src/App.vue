@@ -56,7 +56,9 @@ body {
 main {
   margin-top: 10px;
 }
-
+img {
+  max-width: 100%;
+}
 #app {
   color: #2c3e50;
   /* margin-top: -100px; */
