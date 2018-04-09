@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2 v-for='friend in friends'>{{ friend }}</h2>
+    <p>Login/Signup</p>
+    <p>{{ user }}</p>
   </div>
 </template>
 
@@ -8,8 +9,7 @@
   export default {
     data () {
       return {
-        friends: ['Scott', 'Sean', 'Brett'],
-        msg: 'Hey there',
+        user: ['NO USER'],
       }
     }
   }

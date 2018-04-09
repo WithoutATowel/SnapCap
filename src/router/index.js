@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Goodbye from '@/components/Goodbye'
-import Hello from '@/components/Hello'
-import Main from '@/components/Main'
+import SnapShow from '@/components/SnapShow'
+import Nav from '@/components/Nav'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
-      component: Main
+      name: 'Home',
+      component: Home
     },
     {
-      path: '/goodbye',
-      name: 'Goodbye',
-      component: Goodbye
+      path: '/snaps',
+      name: 'SnapShow',
+      component: SnapShow
     }
   ]
 })
