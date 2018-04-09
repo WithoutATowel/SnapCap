@@ -16,8 +16,6 @@
         </div>
       </div>
     </nav>
-
-
   </div>
 </template>
 
@@ -53,5 +51,8 @@ h1 {
 }
 a {
   margin: 0 10px;
+}
+.col {
+  text-align: center;
 }
 </style>

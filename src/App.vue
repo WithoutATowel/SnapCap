@@ -11,33 +11,18 @@
     <footer>
       <Footer />
     </footer>
-    <button v-on:click="getSnaps">Get Snaps</button>
-    <img v-for='snap in snaps' :key='snap.id' v-bind:src='snap.cloudinary_url' />
   </div>
 </template>
 
 <script>
 
-import axios from 'axios'
-
 export default {
   name: 'app',
-  data () {
-    return {
-      snaps: []
-    }
-  },
-  methods: {
-    getSnaps: function () {
-      console.log('clicked on getSnaps')
-      axios.get('/api/api/snaps/')
-        .then((response) => {
-          this.snaps = response.data
-          console.log(response.data)
-          console.log(response.data[0].cloudinary_url)
-        })
-    }
-  }
+  // data () {
+  //   return {
+  //     snaps: []
+  //   }
+  // }
 }
 </script>
 
@@ -50,10 +35,11 @@ body {
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
-  height: 100%;
-}
+   height: 100%;
+ }
 
 main {
+  flex: 1 0 auto;
   margin-top: 10px;
 }
 img {
@@ -65,6 +51,9 @@ img {
   /* max-width: 600px; */
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   /* text-align: center; */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 #app a {
