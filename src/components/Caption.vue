@@ -1,7 +1,7 @@
 <template>
   <div>
     <Vote />
-    <p>Cap goes here</p>
+    <p class='caption-p'>{{ cap }}</p>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import Vote from './Vote.vue'
 
 export default {
+  props: ['cap'],
   components: {
     'Vote': Vote
   },
@@ -22,7 +23,10 @@ export default {
 </script>
 
 <style scoped>
-  h2 {
-    color: red
-  }
+
+.caption-p {
+  display: inline-block;
+  margin-left: 3em;
+}
+
 </style>

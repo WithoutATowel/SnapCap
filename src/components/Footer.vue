@@ -1,20 +1,9 @@
 <template>
   <div class="hello">
-    <p>footer here.....</p>
+    <p>SnapCap &copy; 2018. All Rights Reserved.</p>
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      msg: 'Hello World!!!1!'
-    }
-  }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1 {
   color: #42b983;
