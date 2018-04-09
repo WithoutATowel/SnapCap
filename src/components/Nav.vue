@@ -1,18 +1,30 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <Logged />
+    <a href='/#/'>Home</a>
+    <br />
+    <a href='/#/snaps'>Snap Show</a>
+    <Search />
   </div>
 </template>
 
 <script>
+
+import Logged from './Logged.vue'
+import Search from './Search.vue'
+
 export default {
+  components: {
+    'Logged': Logged,
+    'Search': Search,
+  },
   data () {
     return {
       // note: changing this line won't causes changes
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      msg: 'Goodbye World!!!1!'
+      msg: 'Hello World!!!1!'
     }
   }
 }
