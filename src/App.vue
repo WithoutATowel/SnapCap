@@ -9,8 +9,8 @@
     <footer>
       <Footer />
     </footer>
-    <button v-on:click="getJokes">Get Snaps</button>
-    <p v-for='joke in jokes' :key='joke.id'>{{ joke.joke }}</p>
+    <button v-on:click="getSnaps">Get Snaps</button>
+    <img v-for='snap in snaps' :key='snap.id' v-bind:src='snap.cloudinary_url' />
   </div>
 </template>
 
@@ -22,16 +22,17 @@ export default {
   name: 'app',
   data () {
     return {
-      jokes: []
+      snaps: []
     }
   },
   methods: {
-    getJokes: function () {
-      // axios.get('http://api.icndb.com/jokes/random/10')
-      axios.get('/api/api/snaps')
+    getSnaps: function () {
+      console.log('clicked on getSnaps')
+      axios.get('/api/api/snaps/')
         .then((response) => {
-          this.jokes = response.data.value
+          this.snaps = response.data
           console.log(response.data)
+          console.log(response.data[0].cloudinary_url)
         })
     }
   }
