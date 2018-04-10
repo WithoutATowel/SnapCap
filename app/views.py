@@ -30,9 +30,13 @@ class PictureView(viewsets.ModelViewSet):
         queryset = Picture.objects.all()
         username = self.request.query_params.get('username', None)
         if 'category' in self.kwargs.keys():
-            queryset = queryset.filter(category = self.kwargs['category'])
+            if self.kwargs['category'] == 'friends':
+                friends = Friendship.objects.filter(user_id = 5)
+                queryset = queryset.filter(user__id__in = [friend.friend_id for friend in friends])
+            else:
+                queryset = queryset.filter(category = self.kwargs['category'])
         elif username is not None:
-            queryset = queryset.filter(user__username='username')
+            queryset = queryset.filter(user__username = 'username')
         return queryset
 
 class UsercapView(viewsets.ModelViewSet):
