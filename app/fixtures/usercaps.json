@@ -5,8 +5,7 @@
     "fields": {
         "user": 7,
         "picture": 1,
-        "text": "Oh my!",
-        "votes": 0
+        "text": "Oh my!"
     }
 },
 {
@@ -15,8 +14,7 @@
     "fields": {
         "user": 6,
         "picture": 3,
-        "text": "Here we go",
-        "votes": 0
+        "text": "Here we go"
     }
 },
 {
@@ -25,8 +23,7 @@
     "fields": {
         "user": 5,
         "picture": 2,
-        "text": "What the hell",
-        "votes": 0
+        "text": "What the hell"
     }
 }
 ]

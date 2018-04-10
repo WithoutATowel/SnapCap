@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col s1">
-      <Vote />
+      <Vote v-bind:votes="snap.usercaps[0].votes" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
     </div>
     <div class="col s10">
       <!-- <router-link :to="'/snaps/' + snap.id"><img v-bind:src='snap.cloudinary_url' /></router-link> -->
