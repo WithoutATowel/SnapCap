@@ -1,13 +1,14 @@
 <template>
   <div>
-    <p><a class="modal-trigger" href="#login">Login</a>/<a class="modal-trigger" href="#signup">Signup</a> | {{ user }}</p>
 
+    <p v-if="!$store.state.user"><a class="modal-trigger" href="#login">Login</a>/<a class="modal-trigger" href="#signup">Signup</a></p>
+    <div v-if="$store.state.user"><a v-on:click="logout" href="#">Logout</a> | {{ $store.state.user.username }}</div>
     <!-- Modal Structure -->
     <div id="login" class="modal">
-      <form>
+      <form v-on:submit.prevent="onLoginSubmit">
         <div class="modal-content">
-          <input type="text" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="text" v-model="login['username']" placeholder="Username" />
+          <input type="password" v-model="login['password']" placeholder="Password" />
         </div>
         <div class="modal-footer">
           <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Login</button>
@@ -16,7 +17,7 @@
     </div>
 
     <div id="signup" class="modal">
-      <form v-on:submit.prevent="onSubmit">
+      <form v-on:submit.prevent="onSignupSubmit">
         <div class="modal-content">
 
           <input type="text" name="first-name" v-model="signup['first_name']" placeholder="First Name"/>
@@ -35,6 +36,7 @@
 
 <script>
 import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -46,11 +48,15 @@ export default {
         'last_name': '',
         'email': '',
         'password': ''
+      },
+      login: {
+        'username': '',
+        'password': ''
       }
     }
   },
   methods: {
-    onSubmit (e) {
+    onSignupSubmit (e) {
       e.preventDefault()
       // upload data to the server
       console.log(this.signup)
@@ -59,7 +65,25 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    ...mapActions([
+      'obtainToken'
+    ]),
+    onLoginSubmit (e) {
+      e.preventDefault()
+      //console.log('onLoginSubmit fired')
+      this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
+      // console.log(this.login)
+      // axios.get('/api/api/users/', this.signup).then(result => {
+      //   console.log(result.data)
+      // }).catch(err => {
+      //   console.log(err)
+      // })
+    },
+    logout () {
+      this.$store.dispatch('logout')
     }
+
   }
 }
 </script>

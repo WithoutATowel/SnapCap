@@ -64,7 +64,11 @@ class UserView(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny] # Or anon users can't register
     serializer_class = UserSerializer
 
-
+def jwt_response_payload_handler(token, user=None, request=None):
+    return {
+        'token': token,
+        'user': UserSerializer(user, context={'request': request}).data
+    }
 
 
 
@@ -115,10 +119,10 @@ class UserView(viewsets.ModelViewSet):
     #         else:
     #             form = LoginForm()
     #             return render(request, 'login.html', {'form':form})
-    #     else: 
+    #     else:
     #         form = LoginForm()
     #         return render(request, 'login.html', {'form':form})
-    # else: 
+    # else:
     #     form = LoginForm()
     #     return render(request, 'login.html', {'form':form})
     # return HttpResponse("Login successful.")
@@ -131,7 +135,7 @@ class UserView(viewsets.ModelViewSet):
 
 # def snaps(request):
 #     # if HttpRequest.GET:
-#     #     data = 
+#     #     data =
 #     # else:
 #     data = serializers.serialize("json", Picture.objects.all())
 #     return HttpResponse(data, content_type='application/json')
