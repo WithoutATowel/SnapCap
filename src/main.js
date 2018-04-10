@@ -10,8 +10,8 @@ import VueAxios from 'vue-axios'
 import jwt_decode from 'jwt-decode'
 import Vuex from 'vuex'
 
-Vue.use(Vuex);
-Vue.use(VueAxios, axios);
+Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 const store = new Vuex.Store({
   state: {
@@ -25,16 +25,16 @@ const store = new Vuex.Store({
   mutations: {
     updateToken(state, newToken){
       //console.log('t:', newToken.token, '  u: ', newToken.user)
-      localStorage.setItem('t', newToken.token);
-      localStorage.setItem('u', newToken.user);
-      state.jwt = newToken;
-      state.user = newToken.user;
+      localStorage.setItem('t', newToken.token)
+      localStorage.setItem('u', JSON.stringify(newToken.user))
+      state.jwt = newToken.token
+      state.user = newToken.user
     },
     removeToken(state){
-      localStorage.removeItem('t');
-      localStorage.removeItem('u');
-      state.jwt = null;
-      state.user = null;
+      localStorage.removeItem('t')
+      localStorage.removeItem('u')
+      state.jwt = null
+      state.user = null
     }
   },
   actions:{
@@ -47,13 +47,13 @@ const store = new Vuex.Store({
       console.log('payload: ', payload)
       axios.post(this.state.endpoints.obtainJWT, payload)
         .then((response)=>{
-            this.commit('updateToken', {token: response.data.token, user: response.data.user});
+            this.commit('updateToken', {token: response.data.token, user: response.data.user})
             console.log(response.data)
             // console.log(response.data.user)
             // console.log(response.data.token)
           })
         .catch((error)=>{
-            console.log(error);
+            console.log(error)
           })
     },
     refreshToken(){
@@ -69,9 +69,9 @@ const store = new Vuex.Store({
           })
     },
     inspectToken(){
-      const token = this.state.jwt;
+      const token = this.state.jwt
       if(token){
-        const decoded = jwt_decode(token);
+        const decoded = jwt_decode(token)
         const exp = decoded.exp
         const orig_iat = decoded.orig_iat
         if(exp - (Date.now()/1000) < 1800 && (Date.now()/1000) - orig_iat < 628200){
@@ -84,7 +84,7 @@ const store = new Vuex.Store({
       }
     },
     logout(){
-      this.commit('removeToken');
+      this.commit('removeToken')
     }
   }
 })
