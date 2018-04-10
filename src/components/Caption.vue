@@ -1,7 +1,7 @@
 <template>
   <div>
     <Vote v-bind:votes="'150'" v-bind:element_id="cap.id" v-bind:element_type="'cap'"  />
-    <p class='caption-p'>{{ cap }}</p>
+    <p class='caption-p'>{{ text }}</p>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import Vote from './Vote.vue'
 
 export default {
-  props: ['cap'],
+  props: ['text'],
   components: {
     Vote
   },
