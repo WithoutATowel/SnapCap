@@ -9,9 +9,8 @@
           <h5>SnapCap</h5>
         </div>
         <div class="links col s4">
-          <a href='/#/'>Home</a>
-          <a href='/#/snaps'>Snap Show</a>
-          <a href='/#/profile'>Profile</a>
+          <router-link to='/'>Home</router-link>
+          <router-link to='/profile'>Profile</router-link>
           <Search />
         </div>
       </div>

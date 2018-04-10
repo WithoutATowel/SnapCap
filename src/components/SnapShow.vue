@@ -1,6 +1,7 @@
 <template>
   <div class="snap-show">
-    <p>Img goes here!!!!!!</p>
+    <p>~~~~Img # {{ $route.params.id }} goes here~~~~</p>
+    <p>the above # is coming from the url params id</p>
     <!-- <div v-for='cap in captions' :key='caption.id'> -->
     <div v-for='cap in captions'>
       <Caption class='caption' v-bind:cap='cap' />
@@ -13,8 +14,11 @@
 import Caption from './Caption.vue'
 
 export default {
+  props: {
+    snap: 'snap'
+  },
   components: {
-    'Caption': Caption
+    Caption
   },
   data () {
     return {

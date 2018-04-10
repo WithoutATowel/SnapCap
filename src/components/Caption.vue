@@ -12,7 +12,7 @@ import Vote from './Vote.vue'
 export default {
   props: ['cap'],
   components: {
-    'Vote': Vote
+    Vote
   },
   data () {
     return {
