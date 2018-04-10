@@ -17,15 +17,11 @@ urlpatterns = [
     url('api/snaps/(?P<category>\D+)/$', views.PictureView.as_view({'get': 'list'})),
     url('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
-    # path('signup/', views.signup, name='signup'),
+    
     # path('login/', views.login, name='login'),
     # path('logout/', views.logout, name='logout'),
     
-    # path('snaps/friends/', views.friends, name='friends'),
-    # path('snaps/<int:snap_id>/vote/', views.snap_vote, name='snap_vote'),
-    
     # path('profile/<int:profile_id>/', views.profile, name='profile'),
-    # path('caps/<int:cap_id>/<int:is_card>/', views.cap_vote, name='cap_vote'),
 ]
 
 
@@ -33,3 +29,7 @@ urlpatterns = [
 # path('snaps/', views.snaps, name='snaps'),
 # path('snaps/<int:snap_id>/', views.details, name='details'),
 # path('snaps/<str:category>/', views.category, name='category'),
+# path('signup/', views.signup, name='signup'),
+# path('snaps/<int:snap_id>/vote/', views.snap_vote, name='snap_vote'),
+# path('caps/<int:cap_id>/<int:is_card>/', views.cap_vote, name='cap_vote'),
+# path('snaps/friends/', views.friends, name='friends'),
