@@ -4,7 +4,7 @@
       <Nav />
     </header>
     <main>
-      <div class="container">
+      <div class="router-container container-fluid">
         <router-view />
       </div>
     </main>
@@ -27,6 +27,7 @@ export default {
 </script>
 
 <style>
+
 html {
   height: 100%;
 }
@@ -42,9 +43,15 @@ main {
   flex: 1 0 auto;
   margin-top: 10px;
 }
+
 img {
   max-width: 100%;
 }
+
+.router-container {
+  padding: 1em 2em;
+}
+
 #app {
   color: #2c3e50;
   /* margin-top: -100px; */
@@ -60,4 +67,5 @@ img {
   color: #42b983;
   /* text-decoration: none; */
 }
+
 </style>

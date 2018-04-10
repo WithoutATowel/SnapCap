@@ -8,8 +8,8 @@
       <li class="tab col s2"><a v-on:click="getSports" href="#sports">Sports</a></li>
       <li class="tab col s2"><a v-on:click="getHummus" href="#hummus">Hummus</a></li>
     </ul>
-    <div v-for='snap in snaps' :key='snap.id'>
-      <FeedSnap v-bind:snap="snap" />
+    <div class='foo' v-for='snap in snaps' :key='snap.id'>
+      <FeedSnap class='feed-snap' v-bind:snap="snap" />
     </div>
   </div>
 </template>
@@ -79,7 +79,10 @@ export default {
 </script>
 
 <style scoped>
-  h2 {
-    color: red
-  }
+
+.feed-snap {
+  padding: 1em;
+  background-color: rgba(38, 232, 156, .4);
+}
+
 </style>

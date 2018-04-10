@@ -1,7 +1,10 @@
 <template>
   <div>
-    <Vote v-bind:votes="'150'" v-bind:element_id="cap.id" v-bind:element_type="'cap'"  />
-    <p class='caption-p'>{{ cap.text }}</p>
+    <Vote v-bind:votes='cap.votes' v-bind:element_id="cap.id" v-bind:element_type="'cap'"  />
+    <div class='caption-box'>
+      <p>"{{ cap.text }}"</p>
+      <p>number of votes: {{ cap.votes }}</p>
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,7 @@ export default {
 
 <style scoped>
 
-.caption-p {
+.caption-box {
   display: inline-block;
   margin-left: 3em;
 }
