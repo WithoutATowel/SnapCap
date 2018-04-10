@@ -4,7 +4,7 @@
       <Vote />
     </div>
     <div class="col s10">
-      <img v-bind:src='snap.cloudinary_url' />
+      <a :href="'/#/snaps/' + snap.id"><img v-bind:src='snap.cloudinary_url' /></a>
       <p>Cap goes here</p>
     </div>
     <div class="col s1">
