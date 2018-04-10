@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.urls import path, re_path, include
 from . import views
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 router = routers.DefaultRouter()
 router.register('users', views.UserView)
@@ -15,15 +16,17 @@ router.register('friends', views.FriendshipView)
 urlpatterns = [
     path('', views.index, name='index'),
     url('api/snaps/(?P<category>\D+)/$', views.PictureView.as_view({'get': 'list'})),
-    url('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^auth/obtain_token/', obtain_jwt_token),
+    url(r'^auth/refresh_token/', refresh_jwt_token),
+    # url('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
     # path('signup/', views.signup, name='signup'),
     # path('login/', views.login, name='login'),
     # path('logout/', views.logout, name='logout'),
-    
+
     # path('snaps/friends/', views.friends, name='friends'),
     # path('snaps/<int:snap_id>/vote/', views.snap_vote, name='snap_vote'),
-    
+
     # path('profile/<int:profile_id>/', views.profile, name='profile'),
     # path('caps/<int:cap_id>/<int:is_card>/', views.cap_vote, name='cap_vote'),
 ]
