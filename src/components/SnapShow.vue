@@ -2,7 +2,7 @@
   <div class="snap-show">
     <img :src='url' />
     <div v-for='cap in usercaps'>
-      <Caption class='caption' v-bind:text='cap.text' />
+      <Caption class='caption' :cap='cap' />
     </div>
   </div>
 </template>
