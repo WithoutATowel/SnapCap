@@ -7,13 +7,16 @@
       <router-link :to="{ name: 'SnapShow', params: {
           id: snap.id,
           url: snap.cloudinary_url,
+          user: snap.user,
           usercaps: snap.usercaps
         } }"><img v-bind:src='snap.cloudinary_url' />
       </router-link>
+      <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>go to user profile for snap</p></router-link>
       <div class='top-cap-box'>
         <h5>Top Caption!</h5>
         <p v-if='this.topCap'>"{{ this.topCap.text }}"</p>
         <p v-if='this.topCap'>number of votes: {{ this.topCap.votes }}</p>
+        <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }"><p>go to user profile for cap</p></router-link>
       </div>
     </div>
     <div class="col s1">
@@ -26,8 +29,8 @@
 import Vote from './Vote.vue'
 
 export default {
-  mounted() {
-    this.findTopSnap()
+  mounted () {
+    this.getTopSnap()
   },
   props: ['snap'],
   components: {
@@ -39,7 +42,7 @@ export default {
     }
   },
   methods: {
-    findTopSnap: function () {
+    getTopSnap: function () {
       let voteCount = 0
       this.snap.usercaps.forEach(cap => {
         if (cap.votes > voteCount) {
@@ -47,7 +50,7 @@ export default {
           voteCount = cap.votes
         }
       })
-      console.log(this.topCap)
+      console.log('this.topCap: ', this.topCap)
     }
   }
 }
