@@ -13,10 +13,14 @@ class UsercapSerializer(serializers.ModelSerializer):
 
 class PictureSerializer(serializers.ModelSerializer):
     usercaps = UsercapSerializer(many=True, read_only=True)
+    vote_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Picture
-        fields = ('id', 'user', 'cloudinary_url', 'category', 'usercaps')
+        fields = ('id', 'user', 'cloudinary_url', 'category', 'usercaps', 'vote_count')
+
+    def get_vote_count(self, obj):
+        return obj.vote_picture_set.count()
 
 class Vote_PictureSerializer(serializers.ModelSerializer):
     class Meta:

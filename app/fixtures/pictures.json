@@ -13,7 +13,7 @@
     "pk": 2,
     "fields": {
         "user": 6,
-        "cloudinary_url": "https://i.imgur.com/RV3ijwy.gifv",
+        "cloudinary_url": "https://i.imgur.com/RV3ijwy.gif",
         "category": "sports"
     }
 },
