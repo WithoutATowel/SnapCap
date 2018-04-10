@@ -17,18 +17,17 @@
 <script>
 
 import axios from 'axios'
-import Nav from './Nav.vue'
 import FeedSnap from './FeedSnap.vue'
 
 export default {
 
   components: {
-    'Nav': Nav,
     'FeedSnap': FeedSnap
   },
   data () {
     return {
-      snaps: []
+      snaps: [],
+      topCap: null
     }
   },
   methods: {
@@ -37,8 +36,7 @@ export default {
       axios.get('/api/api/snaps/')
         .then((response) => {
           this.snaps = response.data
-          console.log(response.data)
-          console.log(response.data[0].cloudinary_url)
+          console.log('here is response.data (snaps): ', response.data)
         })
     },
     getAnimals: function () {
