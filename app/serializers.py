@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Profile, Picture, Usercap, Vote_Picture, Vote_Caption, Friendship #, Card
+from django.contrib.auth.models import User
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,3 +38,20 @@ class FriendshipSerializer(serializers.ModelSerializer):
         model = Friendship
         fields = ('id', 'user', 'friend', 'status')
 
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+        user = User.objects.create(username=validated_data['username'])
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    # Fields:
+    # https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password')
+        write_only_fields = ('password', )
+        read_only_fields = ('id', )

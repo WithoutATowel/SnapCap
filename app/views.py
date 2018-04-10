@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import User, Profile, Picture, Usercap, Vote_Picture, Vote_Caption, Friendship #, Card
-from .forms import LoginForm, SignUpForm
 from django.contrib.auth.models import User
+from .forms import LoginForm, SignUpForm
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 import requests
-from rest_framework import viewsets
-from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, FriendshipSerializer
+from rest_framework import viewsets, permissions
+from rest_framework.generics import CreateAPIView
+from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, FriendshipSerializer, UserSerializer
 
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
@@ -34,7 +35,6 @@ class PictureView(viewsets.ModelViewSet):
             queryset = queryset.filter(user__username='username')
         return queryset
 
-
 class UsercapView(viewsets.ModelViewSet):
     queryset = Usercap.objects.all()
     serializer_class = UsercapSerializer
@@ -54,6 +54,76 @@ class FriendshipView(viewsets.ModelViewSet):
 def index(request):
     print('okay')
     return render(request, 'index.html')
+
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    permission_classes = [permissions.AllowAny] # Or anon users can't register
+    serializer_class = UserSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def signup(request):
+    # FROM CAT COLLECTOR:
+    # from django.contrib.auth import authenticate, login, logout
+    #
+    # FROM CAT COLLECTOR:
+    # if request.method == 'POST':
+    #     print('hit the route')
+    #     form = SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         print('form is valid')
+    #         form.save()
+    #         username = form.cleaned_data.get('username')
+    #         raw_password = form.cleaned_data.get('password')
+    #         user = authenticate(username=username, password=raw_password)
+    #         login(request, user)
+    #         return redirect('/')
+    # else:
+    #     form = SignUpForm()
+    # return render(request, 'signup.html', {'form': form})
+#   return HttpResponse("User registered.")
+
+# def login(request):
+    # FROM CAT COLLECTOR:
+    # if request.method == "POST":
+    #     form = LoginForm(request.POST)
+    #     if form.is_valid():
+    #         u = form.cleaned_data['username']
+    #         p = form.cleaned_data['password']
+    #         user = authenticate(username = u, password = p)
+    #         if user is not None:
+    #             if user.is_active:
+    #                 login(request, user)
+    #                 return HttpResponseRedirect('/')
+    #             else:
+    #                 print("This account has been disabled")
+    #         else:
+    #             form = LoginForm()
+    #             return render(request, 'login.html', {'form':form})
+    #     else: 
+    #         form = LoginForm()
+    #         return render(request, 'login.html', {'form':form})
+    # else: 
+    #     form = LoginForm()
+    #     return render(request, 'login.html', {'form':form})
+    # return HttpResponse("Login successful.")
+
+# def logout(request):
+    # FROM CAT COLLECTOR:
+    # logout(request)
+    # return HttpResponseRedirect('/')
+    # return HttpResponse("Logout successful.")
 
 # def snaps(request):
 #     # if HttpRequest.GET:
@@ -80,14 +150,6 @@ def index(request):
 # def snap_vote(request, snap_id):
 #     return HttpResponse("Snap vote recorded.")
 
-# def signup(request):
-#     return HttpResponse("User registered.")
-
-# def login(request):
-#     return HttpResponse("Login successful.")
-
-# def logout(request):
-#     return HttpResponse("Logout successful.")
 
 # def profile(request, profile_id):
 #     if request.method == "GET":
