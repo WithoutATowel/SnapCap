@@ -56,12 +56,12 @@ export default {
     }
   },
   methods: {
-    onSignupSubmit (e) {
-      e.preventDefault()
+    onSignupSubmit () {
       // upload data to the server
       console.log(this.signup)
       axios.post('/api/api/users/', this.signup).then(result => {
-        console.log(result.data)
+        console.log('signup data: ', result.data)
+        //this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
       }).catch(err => {
         console.log(err)
       })
@@ -69,8 +69,7 @@ export default {
     ...mapActions([
       'obtainToken'
     ]),
-    onLoginSubmit (e) {
-      e.preventDefault()
+    onLoginSubmit () {
       //console.log('onLoginSubmit fired')
       this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
       // console.log(this.login)
