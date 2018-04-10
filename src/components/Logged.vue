@@ -18,7 +18,8 @@
     <div id="signup" class="modal">
       <form>
         <div class="modal-content">
-          <input type="text" name="name" placeholder="Name"/>
+          <input type="text" name="first-name" placeholder="First Name"/>
+          <input type="text" name="last-name" placeholder="Last Name"/>
           <input type="text" name="username" placeholder="Username" />
           <input type="text" name="email" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />

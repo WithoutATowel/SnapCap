@@ -4,7 +4,8 @@
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
       </div>
-      <div class="vote-num">150</div>
+
+      <div class="vote-num">{{ votes }}</div>
     </a>
   </div>
 
@@ -13,6 +14,7 @@
 
 <script>
 export default {
+  props: ['votes', 'element_id', 'element_type'],
   data () {
     return {
       data: 'NO DATA'
