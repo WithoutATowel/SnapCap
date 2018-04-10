@@ -42,9 +42,15 @@ main {
   flex: 1 0 auto;
   margin-top: 10px;
 }
+
 img {
   max-width: 100%;
 }
+
+select {
+  display: block;
+}
+
 #app {
   color: #2c3e50;
   /* margin-top: -100px; */

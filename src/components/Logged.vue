@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><a class="modal-trigger" href="#login">Login</a>/<a class="modal-trigger" href="#signup">Signup</a> | {{ user }}</p>
+    <p><a class="modal-trigger" href="#login">Login</a> / <a class="modal-trigger" href="#signup">Signup</a> | {{ user }}</p>
 
     <!-- Modal Structure -->
     <div id="login" class="modal">
