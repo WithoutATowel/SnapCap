@@ -4,7 +4,7 @@
       <Vote />
     </div>
     <div class="col s10">
-      <a :href="'/#/snaps/' + snap.id"><img v-bind:src='snap.cloudinary_url' /></a>
+      <router-link :to="'/snaps/' + snap.id"><img v-bind:src='snap.cloudinary_url' /></router-link>
       <p>Cap goes here</p>
     </div>
     <div class="col s1">
@@ -19,7 +19,7 @@ import Vote from './Vote.vue'
 export default {
   props: ['snap'],
   components: {
-    'Vote': Vote
+    Vote
   },
   data () {
     return {

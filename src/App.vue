@@ -5,14 +5,12 @@
     </header>
     <main>
       <div class="container">
-        <router-view/>
+        <router-view />
       </div>
     </main>
     <footer>
       <Footer />
     </footer>
-    <button v-on:click="getSnaps">Get Snaps</button>
-    <img v-for='snap in snaps' :key='snap.id' v-bind:src='snap.cloudinary_url' />
   </div>
 </template>
 
@@ -24,18 +22,8 @@ export default {
   name: 'app',
   data () {
     return {
+      snap: 'boooo',
       snaps: []
-    }
-  },
-  methods: {
-    getSnaps: function () {
-      console.log('clicked on getSnaps')
-      axios.get('/api/api/snaps/')
-        .then((response) => {
-          this.snaps = response.data
-          console.log(response.data)
-          console.log(response.data[0].cloudinary_url)
-        })
     }
   }
 }

@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     getAll: function () {
-      // axios.get('http://api.icndb.com/jokes/random/10')
       console.log('clicked on getSnaps')
       axios.get('/api/api/snaps/')
         .then((response) => {
