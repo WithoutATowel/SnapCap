@@ -4,7 +4,7 @@
       <Nav />
     </header>
     <main>
-      <div class="container">
+      <div class="router-container container-fluid">
         <router-view />
       </div>
     </main>
@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style>
+
 html {
   height: 100%;
 }
@@ -66,6 +67,11 @@ select {
   display: block;
 }
 
+.router-container {
+  padding: 1em 2em;
+
+}
+
 #app {
   color: #2c3e50;
   /* margin-top: -100px; */
@@ -81,4 +87,5 @@ select {
   color: #42b983;
   /* text-decoration: none; */
 }
+
 </style>

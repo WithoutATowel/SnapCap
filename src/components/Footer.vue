@@ -1,11 +1,12 @@
 <template>
-  <footer>
+  <div class='footer'>
     <p>SnapCap &copy; 2018. All Rights Reserved.</p>
-  </footer>
+  </div>
 </template>
 
 <style scoped>
-footer {
+
+.footer {
   padding: 4em;
   display: flex;
   justify-content: center;
