@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     getUser: function () {
-      console.log('clicked on getUser')
-      axios.get('/api/api/users/' + this.id)
+      console.log('clicked on getUser', this.id)
+      axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
           this.snaps = response.data
           console.log(response.data)
