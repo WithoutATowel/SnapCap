@@ -16,7 +16,8 @@ export default new Router({
     {
       path: '/snaps/:id',
       name: 'SnapShow',
-      component: SnapShow
+      component: SnapShow,
+      props: true
     },
     {
       path: '/profile',

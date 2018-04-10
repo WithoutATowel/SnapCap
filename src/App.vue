@@ -16,8 +16,23 @@
 
 <script>
 
+
+
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    if (localStorage.getItem('t')) {
+      let token = localStorage.getItem('t')
+      let user = localStorage.getItem('u')
+      user = JSON.parse(user)
+      this.$store.state.jwt = token
+      this.$store.state.user = user
+    } else {
+      localStorage.removeItem('t')
+      localStorage.removeItem('u')
+      this.$store.dispatch('logout')
+    }
+  }
   // data () {
   //   return {
   //     snaps: []
