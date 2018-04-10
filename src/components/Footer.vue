@@ -6,6 +6,9 @@
 
 <style scoped>
 footer {
+  padding: 4em;
+  display: flex;
+  justify-content: center;
   background: #730046;
   color: white;
 }
