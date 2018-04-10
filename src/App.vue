@@ -16,16 +16,13 @@
 
 <script>
 
-import axios from 'axios'
-
 export default {
   name: 'app',
-  data () {
-    return {
-      snap: 'boooo',
-      snaps: []
-    }
-  }
+  // data () {
+  //   return {
+  //     snaps: []
+  //   }
+  // }
 }
 </script>
 
@@ -38,10 +35,11 @@ body {
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
-  height: 100%;
-}
+   height: 100%;
+ }
 
 main {
+  flex: 1 0 auto;
   margin-top: 10px;
 }
 img {
@@ -53,6 +51,9 @@ img {
   /* max-width: 600px; */
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   /* text-align: center; */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 #app a {
