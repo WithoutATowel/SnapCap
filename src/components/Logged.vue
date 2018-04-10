@@ -1,9 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <p><a class="modal-trigger" href="#login">Login</a> / <a class="modal-trigger" href="#signup">Signup</a> | {{ user }}</p>
-=======
->>>>>>> 16c6bbcccf3b54ab04f2240d8d06e37ef9af3a70
 
     <p v-if="!$store.state.user"><a class="modal-trigger" href="#login">Login</a>/<a class="modal-trigger" href="#signup">Signup</a></p>
     <div v-if="$store.state.user"><a v-on:click="logout" href="#">Logout</a> | {{ $store.state.user.username }}</div>
