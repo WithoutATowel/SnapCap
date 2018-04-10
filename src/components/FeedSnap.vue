@@ -1,7 +1,6 @@
 <template>
   <div class="row">
     <div class="col s1">
-      {{snap.id}}
       <Vote v-bind:votes="snap.usercaps[0].votes" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
     </div>
     <div class="col s10">
