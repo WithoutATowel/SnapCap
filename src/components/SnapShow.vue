@@ -1,10 +1,9 @@
 <template>
   <div class="snap-show">
-    <p>~~~~Img # {{ $route.params.id }} goes here~~~~</p>
-    <p>the above # is coming from the url params id</p>
-    <!-- <div v-for='cap in captions' :key='caption.id'> -->
-    <div v-for='cap in captions'>
-      <Caption class='caption' v-bind:cap='cap' />
+    <img :src='url' />
+    <router-link :to="{ name: 'Profile', params: { id: user } }"><p>go to user profile for snap</p></router-link>
+    <div v-for='cap in usercaps'>
+      <Caption class='caption' :cap='cap' />
     </div>
   </div>
 </template>
@@ -14,9 +13,7 @@
 import Caption from './Caption.vue'
 
 export default {
-  props: {
-    snap: 'snap'
-  },
+  props: ['id', 'url', 'user', 'usercaps'],
   components: {
     Caption
   },

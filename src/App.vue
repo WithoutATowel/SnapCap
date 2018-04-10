@@ -4,7 +4,7 @@
       <Nav />
     </header>
     <main>
-      <div class="container">
+      <div class="router-container container-fluid">
         <router-view />
       </div>
     </main>
@@ -16,8 +16,23 @@
 
 <script>
 
+
+
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    if (localStorage.getItem('t')) {
+      let token = localStorage.getItem('t')
+      let user = localStorage.getItem('u')
+      user = JSON.parse(user)
+      this.$store.state.jwt = token
+      this.$store.state.user = user
+    } else {
+      localStorage.removeItem('t')
+      localStorage.removeItem('u')
+      this.$store.dispatch('logout')
+    }
+  }
   // data () {
   //   return {
   //     snaps: []
@@ -27,6 +42,7 @@ export default {
 </script>
 
 <style>
+
 html {
   height: 100%;
 }
@@ -51,6 +67,11 @@ select {
   display: block;
 }
 
+.router-container {
+  padding: 1em 2em;
+
+}
+
 #app {
   color: #2c3e50;
   /* margin-top: -100px; */
@@ -66,4 +87,5 @@ select {
   color: #42b983;
   /* text-decoration: none; */
 }
+
 </style>
