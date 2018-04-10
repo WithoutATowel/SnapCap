@@ -1,6 +1,7 @@
 <template>
   <div class="snap-show">
     <img :src='url' />
+    <router-link :to="{ name: 'Profile', params: { id: user } }"><p>go to user profile for snap</p></router-link>
     <div v-for='cap in usercaps'>
       <Caption class='caption' :cap='cap' />
     </div>
@@ -12,7 +13,7 @@
 import Caption from './Caption.vue'
 
 export default {
-  props: ['id', 'url', 'usercaps'],
+  props: ['id', 'url', 'user', 'usercaps'],
   components: {
     Caption
   },
