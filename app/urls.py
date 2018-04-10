@@ -13,7 +13,7 @@ router.register('friends', views.FriendshipView)
 
 urlpatterns = [
     path('', views.index, name='index'),
-    url('^api/snaps/(?P<category>\D+)/$', views.PictureView.as_view({'get': 'list'})),
+    url('api/snaps/(?P<category>\D+)/$', views.PictureView.as_view({'get': 'list'})),
     path('api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # path('snaps/friends/', views.friends, name='friends'),
