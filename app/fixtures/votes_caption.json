@@ -4,7 +4,8 @@
     "pk": 1,
     "fields": {
         "user": 7,
-        "picture": 1
+        "picture": 1,
+        "usercap": 1
     }
 },
 {
@@ -12,7 +13,8 @@
     "pk": 2,
     "fields": {
         "user": 5,
-        "picture": 3
+        "picture": 3,
+        "usercap": 2
     }
 }
 ]
