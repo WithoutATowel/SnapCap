@@ -74,12 +74,6 @@ export default {
   background-color: rgba(38, 232, 156, .4);
 }
 
-/* *, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
 .feed-snap-cont:nth-child(2) {
   border-top: 1px solid #adf6d4;
   margin-top: 0px;

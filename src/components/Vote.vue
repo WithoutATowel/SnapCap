@@ -1,11 +1,11 @@
 <template>
   <div class="col s3 l1">
-    <a href="#" v-on:click="upVote( element_type )">
+    <button v-on:click="upVote( element_type )">
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
       </div>
       <div class="vote-num">{{ votes }}</div>
-    </a>
+    </button>
   </div>
 
 </template>
@@ -25,9 +25,33 @@ export default {
       if (type === 'snap') {
         axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
-          console.log('vote picture return data: ', result.data)
+          // console.log('vote picture return data: ', result)
         }).catch(err => {
-          console.log(err)
+          if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
+            this.$modal.show('dialog', {
+              title: 'Alert!',
+              text: 'You are only allowed to vote once per post.',
+              buttons: [
+                {
+                  title: 'OK',
+                  default: true
+                }
+              ]
+            })
+          }
+          if (err.response.data.non_field_errors[0] === 'Signature has expired.') {
+            this.$modal.show('dialog', {
+              title: 'Alert!',
+              text: 'You need to be logged in to do that',
+              buttons: [
+                {
+                  title: 'OK',
+                  default: true
+                }
+              ]
+            })
+          }
+          console.log(err.response)
         })
       }
       if (type === 'cap') {
@@ -49,13 +73,17 @@ export default {
   h2 {
     color: red
   }
-  a {
+  button {
     display: flex;
     align-items: center;
+    background: none;
+    border: none;
+    color: #42b983;
   }
   .up-icon {
     font-size: 2rem;
     z-index: 2;
+
   }
   i {
     background: white;
