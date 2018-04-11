@@ -21,6 +21,8 @@ export default {
     }
   }
 }
+// For checking authorization:
+// let options = this.$store.state.jwt ? {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}} : ''
 </script>
 
 <style scoped>

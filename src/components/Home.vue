@@ -33,7 +33,7 @@ export default {
   methods: {
     getAll: function () {
       console.log('clicked on All tab')
-      axios.get('/api/api/snaps/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/')
         .then((response) => {
           this.snaps = response.data
           console.log('here is response.data (snaps): ', response.data)
@@ -41,35 +41,35 @@ export default {
     },
     getAnimals: function () {
       console.log('clicked on Animals tab')
-      axios.get('/api/api/snaps/animals/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/animals/')
         .then((response) => {
           this.snaps = response.data
         })
     },
     getCats: function () {
       console.log('clicked on Cats tab')
-      axios.get('/api/api/snaps/cats/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/cats/')
         .then((response) => {
           this.snaps = response.data
         })
     },
     getDogs: function () {
       console.log('clicked on Dogs tab')
-      axios.get('/api/api/snaps/dogs/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/dogs/')
         .then((response) => {
           this.snaps = response.data
         })
     },
     getSports: function () {
       console.log('clicked on Sports tab')
-      axios.get('/api/api/snaps/sports/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/sports/')
         .then((response) => {
           this.snaps = response.data
         })
     },
     getHummus: function () {
       console.log('clicked on Hummus tab')
-      axios.get('/api/api/snaps/hummus/', {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+      axios.get('/api/api/snaps/hummus/')
         .then((response) => {
           this.snaps = response.data
         })

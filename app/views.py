@@ -17,6 +17,7 @@ class ProfileView(viewsets.ModelViewSet):
 class PictureView(viewsets.ModelViewSet):
     queryset = Picture.objects.all()
     serializer_class = PictureSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     # Get a snap's caps:
     # Picture.objects.get(id=1).usercap_set.all()
@@ -42,14 +43,17 @@ class PictureView(viewsets.ModelViewSet):
 class UsercapView(viewsets.ModelViewSet):
     queryset = Usercap.objects.all()
     serializer_class = UsercapSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class Vote_PictureView(viewsets.ModelViewSet):
     queryset = Vote_Picture.objects.all()
     serializer_class = Vote_PictureSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class Vote_CaptionView(viewsets.ModelViewSet):
     queryset = Vote_Caption.objects.all()
     serializer_class = Vote_CaptionSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class FriendshipView(viewsets.ModelViewSet):
     queryset = Friendship.objects.all()
