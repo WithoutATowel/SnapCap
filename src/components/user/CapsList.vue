@@ -10,15 +10,28 @@
 <script>
 
 import Cap from './Cap.vue'
+import axios from 'axios'
 
 export default {
-  props: ['user_first', 'usercaps'],
+  mounted () {
+    this.getCapsList()
+  },
+  props: ['user_first', 'id'],
   components: {
     Cap
   },
   data () {
     return {
-      data: 'NO DATA'
+      usercaps: []
+    }
+  },
+  methods: {
+    getCapsList: function () {
+      axios.get(`/api/api/user/${this.id}/caps/`)
+        .then((response) => {
+          this.usercaps = response.data
+          console.log('here is capslist comp response.data: ', response.data)
+        })
     }
   }
 }

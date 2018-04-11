@@ -15,11 +15,6 @@ export default {
   props: ['user_first', 'snaps'],
   components: {
     Snap
-  },
-  data () {
-    return {
-      data: 'NO DATA'
-    }
   }
 }
 </script>

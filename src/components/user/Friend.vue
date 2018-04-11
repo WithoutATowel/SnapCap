@@ -1,23 +1,15 @@
 <template>
   <div>
-    <p>friend id: {{ friend.friend }}</p>
+    <router-link :to="{ name: 'Profile', params: { id: friend.pk } }"><p>go to user profile for snap ~~CHANGE THIS TO THEIR IMG~~</p></router-link>
+    </router-link>
+    <p>{{ friend.fields.first_name }} {{ friend.fields.last_name }}</p>
   </div>
 </template>
 
 <script>
 
-// import Vote from './Vote.vue'
-
 export default {
-  props: ['friend'],
-  // components: {
-  //   Friend
-  // },
-  data () {
-    return {
-      data: 'NO DATA'
-    }
-  }
+  props: ['friend']
 }
 </script>
 
