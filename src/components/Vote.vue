@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="col s3 l1">
     <a href="#" v-on:click="upVote( element_type )">
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
       </div>
-
       <div class="vote-num">{{ votes }}</div>
     </a>
   </div>
