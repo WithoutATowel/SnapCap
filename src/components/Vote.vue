@@ -55,7 +55,7 @@ export default {
         })
       }
       if (type === 'cap') {
-        axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+        axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           console.log('vote picture return data: ', result.data)
         }).catch(err => {
