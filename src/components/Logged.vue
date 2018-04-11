@@ -61,7 +61,7 @@ export default {
       console.log(this.signup)
       axios.post('/api/api/users/', this.signup).then(result => {
         console.log('signup data: ', result.data)
-        //this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
+        // this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
       }).catch(err => {
         console.log(err)
       })
@@ -70,7 +70,7 @@ export default {
       'obtainToken'
     ]),
     onLoginSubmit () {
-      //console.log('onLoginSubmit fired')
+      // console.log('onLoginSubmit fired')
       this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
       // console.log(this.login)
       // axios.get('/api/api/users/', this.signup).then(result => {
