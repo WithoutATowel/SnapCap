@@ -3,7 +3,6 @@
     <router-link :to="{ name: 'SnapShow', params: { id: cap.picture } }">
       <img :src='cap.picture__cloudinary_url' />
     </router-link>
-    <!-- <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>go to user profile for snap</p></router-link> -->
     <p>{{ cap.text }}</p>
     <p>number of votes: {{ cap.votes }}</p>
     <!-- <hr /> -->
@@ -12,23 +11,15 @@
 
 <script>
 
-// import Vote from './Vote.vue'
-
 export default {
-  props: ['cap'],
-  // components: {
-  //   Friend
-  // },
-  data () {
-    return {
-      data: 'NO DATA'
-    }
-  }
+  props: ['cap']
 }
 </script>
 
 <style scoped>
 
-
+img {
+  width: 20%;
+}
 
 </style>
