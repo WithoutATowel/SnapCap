@@ -3,7 +3,7 @@
     <img :src='url' />
     <router-link :to="{ name: 'Profile', params: { id: user } }"><p>go to user profile for snap</p></router-link>
     <div v-for='cap in usercaps'>
-      <Caption class='caption' :cap='cap' />
+      <Caption :cap='cap' />
     </div>
   </div>
 </template>
@@ -32,6 +32,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+img {
+  width: 40%;
 }
 
 .snap-show {
