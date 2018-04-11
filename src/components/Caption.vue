@@ -3,7 +3,7 @@
     <Vote v-bind:votes='cap.votes' v-bind:snap_id="cap.picture" v-bind:cap_id="cap.id" v-bind:element_type="'cap'" />
     <div class='caption-box col s9 l11'>
       "{{ cap.text }}"
-      <router-link :to="{ name: 'Profile', params: { id: cap.user } }">by {{ cap.user }}</router-link>
+      <router-link :to="{ name: 'Profile', params: { id: cap.user } }">by {{ cap.submitter }}</router-link>
     </div>
   </div>
 </template>

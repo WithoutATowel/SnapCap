@@ -1,11 +1,11 @@
 <template>
   <div class="snap-show">
     <img :src='url' />
+    <p>By <router-link :to="{ name: 'Profile', params: { id: user } }">{{ submitter }}</router-link></p>
     <form v-on:submit.prevent="submitCap">
       <input type="text" v-model="newCaption" placeholder="Your caption here..." />
       <button type="submit">Submit Caption</button>
     </form>
-    <router-link :to="{ name: 'Profile', params: { id: user } }"><p>go to user profile for snap</p></router-link>
     <div v-for='cap in usercaps'>
       <Caption :cap='cap' />
     </div>
@@ -26,6 +26,7 @@ export default {
       newCaption: '',
       url: '',
       user: '',
+      submitter: '',
       usercaps: []
     }
   },
@@ -51,6 +52,7 @@ export default {
       .then((response) => {
         this.url = response.data.cloudinary_url
         this.user = response.data.user
+        this.submitter = response.data.submitter
         this.usercaps = response.data.usercaps
         console.log('here is response.data (snaps): ', response.data)
       })
