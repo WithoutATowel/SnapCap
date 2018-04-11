@@ -13,6 +13,7 @@ from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    # Need to set permissions so that a user can only edit their own
 
 class PictureView(viewsets.ModelViewSet):
     queryset = Picture.objects.all()
@@ -58,6 +59,7 @@ class Vote_CaptionView(viewsets.ModelViewSet):
 class FriendshipView(viewsets.ModelViewSet):
     queryset = Friendship.objects.all()
     serializer_class = FriendshipSerializer
+    # Need to set permissions so that users can only view their own friends?
 
 def index(request):
     print('okay')
@@ -67,6 +69,7 @@ class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny] # Or anon users can't register
     serializer_class = UserSerializer
+    # Need to set permissions so that anyone can *sign up* but a user can only edit their own profile
 
 def jwt_response_payload_handler(token, user=None, request=None):
     return {

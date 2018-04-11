@@ -21,7 +21,7 @@ class UsercapSerializer(serializers.ModelSerializer):
 
 
 class PictureSerializer(serializers.ModelSerializer):
-    usercaps = UsercapSerializer(many=True, read_only=True)
+    usercaps = UsercapSerializer(many=True, read_only=True, allow_null=True)
     votes = serializers.SerializerMethodField()
 
     class Meta:
