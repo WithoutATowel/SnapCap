@@ -6,10 +6,12 @@
           <Logged />
         </div>
         <div class="col s4">
-          <h5>SnapCap</h5>
+          <h5><router-link to='/'>SnapCap</router-link></h5>
         </div>
         <div class="links col s4">
-          <router-link to='/'>Home</router-link>
+          <div class="col">
+            <Post />
+          </div>
           <router-link to='/profile'>Profile</router-link>
           <Search />
         </div>
@@ -22,11 +24,13 @@
 
 import Logged from './Logged.vue'
 import Search from './Search.vue'
+import Post from './Post.vue'
 
 export default {
   components: {
     'Logged': Logged,
-    'Search': Search
+    'Search': Search,
+    'Post': Post
   },
   data () {
     return {

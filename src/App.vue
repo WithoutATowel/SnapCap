@@ -60,8 +60,13 @@ img {
   max-width: 100%;
 }
 
+select {
+  display: block;
+}
+
 .router-container {
   padding: 1em 2em;
+
 }
 
 #app {
