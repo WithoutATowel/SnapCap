@@ -30,7 +30,7 @@
         <SnapsList v-if='user' :snaps='user.picture_set' :user_first='user.first_name' />
       </div>
       <div class='col s4'>
-        <CapsList v-if='user' :usercaps='user.usercap_set' :user_first='user.first_name' />
+        <CapsList v-if='user' :id='user.id' :user_first='user.first_name' />
       </div>
     </div>  <!-- END Bottom Profile Row -->
   </div>

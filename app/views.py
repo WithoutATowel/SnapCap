@@ -11,6 +11,7 @@ from rest_framework.generics import CreateAPIView
 from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, UserSerializer, FriendshipSerializer
 from django.db.models import Count
 from datetime import date, timedelta
+import json
 
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
@@ -73,9 +74,15 @@ def jwt_response_payload_handler(token, user=None, request=None):
         'user': UserSerializer(user, context={'request': request}).data
     }
 
+# Get a list of user's friends as user objects
 def FriendsListView(request, user_id):
     friend_ids = Friendship.objects.filter(user=user_id)
     friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids])
-    # friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids]).values('first_name', 'last_name').annotate(profile_img_url=)
     friends = serializers.serialize('json', list(friends), fields=('id', 'first_name', 'last_name'))
     return HttpResponse(friends, content_type='application/json')
+
+# Get a list of user's caps that includes it's votes the snap's url and user
+def CapsListView(request, user_id):
+    usercaps = Usercap.objects.filter(user=user_id).values('picture', 'text', 'picture__cloudinary_url', 'picture__user').annotate(votes=Count('vote_caption')).order_by('-votes')
+    usercaps = json.dumps(list(usercaps))
+    return HttpResponse(usercaps, content_type='application/json')

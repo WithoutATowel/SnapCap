@@ -18,5 +18,6 @@ urlpatterns = [
     url('auth/obtain_token/', obtain_jwt_token),
     url('auth/refresh_token/', refresh_jwt_token),
     path('api/user/<int:user_id>/friends/', views.FriendsListView, name='friends_list'),
+    path('api/user/<int:user_id>/caps/', views.CapsListView, name='caps_list'),
     path('api/', include(router.urls)),
 ]
