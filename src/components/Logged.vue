@@ -1,36 +1,57 @@
 <template>
   <div>
-
-    <p v-if="!$store.state.user"><a class="modal-trigger" href="#login">Login</a>/<a class="modal-trigger" href="#signup">Signup</a></p>
-    <div v-if="$store.state.user"><a v-on:click="logout" href="#">Logout</a> | {{ $store.state.user.username }}</div>
-    <!-- Modal Structure -->
-    <div id="login" class="modal">
-      <form v-on:submit.prevent="onLoginSubmit">
-        <div class="modal-content">
-          <input type="text" v-model="login['username']" placeholder="Username" />
-          <input type="password" v-model="login['password']" placeholder="Password" />
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Login</button>
-        </div>
-      </form>
+    <p v-if="!$store.state.user">
+      <button v-on:click="show('login')" class="header-button">Login</button> or
+      <button v-on:click="show('signup')" class="header-button">Signup</button></p>
+    <div v-if="$store.state.user">
+      <button v-on:click="logout" class="header-button">Logout</button> |
+      <p class='username'>{{ $store.state.user.username }}</p>
     </div>
 
-    <div id="signup" class="modal">
-      <form v-on:submit.prevent="onSignupSubmit">
-        <div class="modal-content">
+    <modal name="login">
+      <div class="row-fluid">
+        <div class="col s6">
+          <div class="main-modal">
+            <form v-on:submit.prevent="onLoginSubmit('login')">
+              <div class="modal-content">
+                <input type="text" v-model="login['username']" placeholder="Username" />
+                <input type="password" v-model="login['password']" placeholder="Password" />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="yellow-btn btn-flat">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col s6 login-img-cont">
+          <img src="src/assets/login.jpeg" />
+        </div>
+      </div>
+    </modal>
 
-          <input type="text" name="first-name" v-model="signup['first_name']" placeholder="First Name"/>
-          <input type="text" name="last-name" v-model="signup['last_name']" placeholder="Last Name"/>
-          <input type="text" name="username" v-model="signup['username']" placeholder="Username" />
-          <input type="text" name="email" v-model="signup['email']" placeholder="Email" />
-          <input type="password" name="password" v-model="signup['password']" placeholder="Password" />
+    <modal name="signup" height="auto" :scrollable="true" :adaptive="true">
+      <div class="row-fluid">
+        <div class="col s6">
+          <div class="main-modal">
+            <form v-on:submit.prevent="onSignupSubmit('signup')">
+              <div class="modal-content">
+                <input type="text" name="first-name" v-model="signup['first_name']" placeholder="First Name"/>
+                <input type="text" name="last-name" v-model="signup['last_name']" placeholder="Last Name"/>
+                <input type="text" name="username" v-model="signup['username']" placeholder="Username" />
+                <input type="text" name="email" v-model="signup['email']" placeholder="Email" />
+                <input type="password" name="password" v-model="signup['password']" placeholder="Password" />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="yellow-btn btn-flat">Sign Up</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Sign Up</button>
+        <div class="col s6 signup-img-cont">
+          <img src="src/assets/signup.jpeg" />
         </div>
-      </form>
-    </div>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -69,9 +90,10 @@ export default {
     ...mapActions([
       'obtainToken'
     ]),
-    onLoginSubmit () {
+    onLoginSubmit (type) {
       // console.log('onLoginSubmit fired')
       this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
+      this.$modal.hide(type)
       // console.log(this.login)
       // axios.get('/api/api/users/', this.signup).then(result => {
       //   console.log(result.data)
@@ -81,6 +103,9 @@ export default {
     },
     logout () {
       this.$store.dispatch('logout')
+    },
+    show (type) {
+      this.$modal.show(type)
     }
 
   }
@@ -94,4 +119,34 @@ export default {
   p {
     margin: 0px;
   }
+  .username {
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  .login-img-cont, .signup-img-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    overflow: hidden;
+  }
+  .login-img-cont img {
+    margin-left: -100px;
+    margin-top: 0px;
+    width: auto;
+    height: 100%;
+    max-width: initial;
+  }
+  .signup-img-cont img {
+    width: auto;
+    height: 100%;
+    max-width: initial;
+  }
+  .row-fluid, .s6 {
+    height: 100%;
+  }
+  .main-modal {
+    height: 100%
+  }
+
 </style>

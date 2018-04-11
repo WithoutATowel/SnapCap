@@ -84,5 +84,31 @@ select {
   color: #42b983;
   /* text-decoration: none; */
 }
+.main-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+nav .v--modal-box.v--modal form {
+  height: initial;
+}
+
+.yellow-btn, button.yellow-btn {
+  background: #f9de70;
+}
+.yellow-btn:hover, button .yellow-btn:hover, .yellow-btn:focus, button .yellow-btn:focus {
+  background: #FFD216;
+}
+
+button.header-button {
+  background: rgba(255, 255, 255, 0.51);
+  border: none;
+  border-radius: 2px;
+}
+button.header-button:hover {
+  background: rgb(255, 255, 255);
+}
 
 </style>

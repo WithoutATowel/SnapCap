@@ -1,26 +1,27 @@
 <template>
   <div>
-    <p v-if="$store.state.user"><a class="modal-trigger" href="#post">Post</a></p>
+    <p v-if="$store.state.user"><button v-on:click="show" class="header-button">Post</button></p>
 
-    <!-- Modal Structure -->
-    <div id="post" class="modal">
-      <form v-on:submit.prevent="onSubmit">
-        <div class="modal-content">
-          <input type="file" id="file" placeholder="image" />
-          <select id="category" v-model="category">
-            <option value="" disabled>Category</option>
-            <option value="animals">Animals</option>
-            <option value="cats">Cats</option>
-            <option value="dogs">Dogs</option>
-            <option value="sports">Sports</option>
-            <option value="hummus">Hummus</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Post</button>
-        </div>
-      </form>
-    </div>
+    <modal name="post">
+      <div class="main-modal">
+        <form v-on:submit.prevent="onSubmit">
+          <div class="modal-content">
+            <input type="file" id="file" placeholder="image" />
+            <select id="category" v-model="category">
+              <option value="" disabled>Category</option>
+              <option value="animals">Animals</option>
+              <option value="cats">Cats</option>
+              <option value="dogs">Dogs</option>
+              <option value="sports">Sports</option>
+              <option value="hummus">Hummus</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="yellow-btn btn-flat">Post</button>
+          </div>
+        </form>
+      </div>
+    </modal>
 
   </div>
 </template>
@@ -47,8 +48,8 @@ export default {
     }
   },
   methods: {
-    onSubmit (e) {
-      e.preventDefault()
+    onSubmit () {
+      this.$modal.hide('post')
       const formData = new FormData()
       let fileInput = document.getElementById('file')
       formData.append('file', fileInput.files[0])
@@ -74,6 +75,9 @@ export default {
       }).then((response) => {
         console.log('Snap created')
       })
+    },
+    show () {
+      this.$modal.show('post')
     }
   }
 }

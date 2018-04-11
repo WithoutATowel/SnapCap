@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#">
+    <a href="#" v-on:click="upVote( element_type )">
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
       </div>
@@ -9,15 +9,38 @@
     </a>
   </div>
 
-
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: ['votes', 'element_id', 'element_type'],
   data () {
     return {
       data: 'NO DATA'
+    }
+  },
+  methods: {
+    upVote (type) {
+      // /api/vote_picture/
+      if (type === 'snap') {
+        axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.element_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+        .then(result => {
+          console.log('vote picture return data: ', result.data)
+        }).catch(err => {
+          console.log(err)
+        })
+      }
+      if (type === 'cap') {
+        console.log('You clicked to add a vote for a caption.... jokes on you, I haven\'t gotten ther yet')
+        // axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.element_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+        // .then(result => {
+        //   console.log('vote picture return data: ', result.data)
+        // }).catch(err => {
+        //   console.log(err)
+        // })
+      }
+
     }
   }
 }
