@@ -61,7 +61,6 @@ class FriendshipSerializer(serializers.ModelSerializer):
         model = Friendship
         fields = ('id', 'user', 'friend', 'status')
 
-
 class UserSerializer(serializers.ModelSerializer):
     # Fields: https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User
     password = serializers.CharField(write_only=True)
@@ -72,7 +71,7 @@ class UserSerializer(serializers.ModelSerializer):
             message='That username already exists, bro',
         )]
     )
-    friends = FriendshipSerializer(many=True, read_only=True)
+    friends = FriendshipSerializer(many=True, read_only=True, allow_null=True)
     picture_set = PictureSerializer(many=True, read_only=True, allow_null=True)
     usercap_set = UsercapSerializer(many=True, read_only=True, allow_null=True)
 
