@@ -20,7 +20,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/profile',
+      path: '/profile/:id',
       name: 'Profile',
       component: Profile,
       props: true

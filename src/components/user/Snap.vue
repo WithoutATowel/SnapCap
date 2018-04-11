@@ -1,6 +1,17 @@
 <template>
   <div>
-    <p>Snap Component</p>
+    <router-link :to="{ name: 'SnapShow', params: {
+        id: snap.id,
+        url: snap.cloudinary_url,
+        user: snap.user,
+        usercaps: snap.usercaps
+      } }"><img :src='snap.cloudinary_url' />
+    </router-link>
+    <p>pic votes: {{ snap.votes }}</p>
+    <p v-if='this.topCap'>"{{ this.topCap.text }}"</p>
+    <p v-if='this.topCap'>number of votes: {{ this.topCap.votes }}</p>
+    <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }"><p>go to user profile for cap</p></router-link>
+    <p>ABOVE LINK DOESN'T RERENDER COMPONENT DATA</p>
   </div>
 </template>
 
@@ -9,13 +20,25 @@
 // import Vote from './Vote.vue'
 
 export default {
-  // props: ['cap'],
-  // components: {
-  //   Friend
-  // },
+  mounted () {
+    this.getTopSnap()
+  },
+  props: ['snap'],
   data () {
     return {
-      data: 'NO DATA'
+      topCap: null
+    }
+  },
+  methods: {
+    getTopSnap: function () {
+      let voteCount = 0
+      this.snap.usercaps.forEach(cap => {
+        if (cap.votes > voteCount) {
+          this.topCap = cap
+          voteCount = cap.votes
+        }
+      })
+      console.log('this.topCap: ', this.topCap)
     }
   }
 }
@@ -23,6 +46,8 @@ export default {
 
 <style scoped>
 
-
+img {
+  width: 50%;
+}
 
 </style>

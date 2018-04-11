@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h5>USERNAME's Caps</h5>
-    <Cap />
+    <h5>{{ user_first }}'s Caps</h5>
+    <div v-for='cap in usercaps'>
+      <Cap :cap='cap' />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 import Cap from './Cap.vue'
 
 export default {
-  // props: ['cap'],
+  props: ['user_first', 'usercaps'],
   components: {
     Cap
   },
