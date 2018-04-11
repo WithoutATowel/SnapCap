@@ -15,8 +15,8 @@ router.register('vote_caption', views.Vote_CaptionView)
 urlpatterns = [
     path('', views.index, name='index'),
     url('api/snaps/(?P<category>\D+)/$', views.PictureView.as_view({'get': 'list'})),
-    url(r'^auth/obtain_token/', obtain_jwt_token),
-    url(r'^auth/refresh_token/', refresh_jwt_token),
+    url('auth/obtain_token/', obtain_jwt_token),
+    url('auth/refresh_token/', refresh_jwt_token),
     path('api/user/<int:user_id>/friends/', views.FriendsListView, name='friends_list'),
     path('api/', include(router.urls)),
 ]

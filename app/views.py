@@ -38,7 +38,7 @@ class PictureView(viewsets.ModelViewSet):
                 queryset = queryset.filter(category = self.kwargs['category'])
         elif username is not None:
             queryset = queryset.filter(user__username = 'username')
-        queryset = queryset.annotate(votes=Count('vote_picture')).order_by('-votes')[:25]
+        queryset = queryset.annotate(votes=Count('vote_picture')).order_by('-votes')
         return queryset
 
 class UsercapView(viewsets.ModelViewSet):
