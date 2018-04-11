@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
@@ -20,70 +20,70 @@ const store = new Vuex.Store({
     endpoints: {
       obtainJWT: 'http://localhost:8080/api/auth/obtain_token/',
       refreshJWT: 'http://localhost:8080/api/auth/refresh_token/'
-    },
+    }
   },
   mutations: {
-    updateToken(state, newToken){
-      //console.log('t:', newToken.token, '  u: ', newToken.user)
+    updateToken (state, newToken) {
+      // console.log('t:', newToken.token, '  u: ', newToken.user)
       localStorage.setItem('t', newToken.token)
       localStorage.setItem('u', JSON.stringify(newToken.user))
       state.jwt = newToken.token
       state.user = newToken.user
     },
-    removeToken(state){
+    removeToken (state) {
       localStorage.removeItem('t')
       localStorage.removeItem('u')
       state.jwt = null
       state.user = null
     }
   },
-  actions:{
-    obtainToken(context, username_pass){
-      console.log('username: ', username_pass[0], 'Password: ', username_pass[1])
+  actions: {
+    obtainToken (context, usernamePass) {
+      console.log('username: ', usernamePass[0], 'Password: ', usernamePass[1])
       const payload = {
-        'username': username_pass[0],
-        'password': username_pass[1]
+        'username': usernamePass[0],
+        'password': usernamePass[1]
       }
       console.log('payload: ', payload)
       axios.post(this.state.endpoints.obtainJWT, payload)
-        .then((response)=>{
-            this.commit('updateToken', {token: response.data.token, user: response.data.user})
-            console.log(response.data)
-            // console.log(response.data.user)
-            // console.log(response.data.token)
-          })
-        .catch((error)=>{
-            console.log(error)
-          })
+        .then((response) => {
+          this.commit('updateToken', {token: response.data.token, user: response.data.user})
+          console.log(response.data)
+          // console.log(response.data.user)
+          // console.log(response.data.token)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
-    refreshToken(){
+    refreshToken () {
       const payload = {
         token: this.state.jwt
       }
       axios.post(this.state.endpoints.refreshJWT, payload)
-        .then((response)=>{
-            this.commit('updateToken', response.data.token)
-          })
-        .catch((error)=>{
-            console.log(error)
-          })
+        .then((response) => {
+          this.commit('updateToken', response.data.token)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
-    inspectToken(){
+    inspectToken () {
       const token = this.state.jwt
-      if(token){
-        const decoded = jwt_decode(token)
+      if (token) {
+        const decoded = jwtDecode(token)
         const exp = decoded.exp
-        const orig_iat = decoded.orig_iat
-        if(exp - (Date.now()/1000) < 1800 && (Date.now()/1000) - orig_iat < 628200){
+        const origIat = decoded.origIat
+        if (exp - (Date.now() / 1000) < 1800 && (Date.now() / 1000) - origIat < 628200) {
           this.dispatch('refreshToken')
-        } else if (exp -(Date.now()/1000) < 1800){
+        } else if (exp - (Date.now() / 1000) < 1800) {
           // DO NOTHING, DO NOT REFRESH
         } else {
           // PROMPT USER TO RE-LOGIN, THIS ELSE CLAUSE COVERS THE CONDITION WHERE A TOKEN IS EXPIRED AS WELL
         }
       }
     },
-    logout(){
+    logout () {
       this.commit('removeToken')
     }
   }
