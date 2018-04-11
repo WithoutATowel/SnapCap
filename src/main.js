@@ -9,9 +9,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import jwtDecode from 'jwt-decode'
 import Vuex from 'vuex'
+import VModal from 'vue-js-modal'
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
+Vue.use(VModal)
 
 const store = new Vuex.Store({
   state: {
