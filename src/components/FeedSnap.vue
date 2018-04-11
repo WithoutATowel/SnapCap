@@ -1,15 +1,12 @@
 <template>
   <div class="row">
     <div class="col s1">
-        <Vote v-if="snap.votes" v-bind:votes="snap.votes" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
-        <Vote v-if="!snap.votes" v-bind:votes="0" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
+        <Vote v-if="snap.votes" v-bind:votes="snap.votes" v-bind:snap_id="snap.id" v-bind:cap_id="null"v-bind:element_type="'snap'" />
+        <Vote v-if="!snap.votes" v-bind:votes="0" v-bind:snap_id="snap.id" v-bind:cap_id="null" v-bind:element_type="'snap'" />
     </div>
     <div class="each-snap col s12">
       <router-link :to="{ name: 'SnapShow', params: {
           id: snap.id,
-          url: snap.cloudinary_url,
-          user: snap.user,
-          usercaps: snap.usercaps
         } }"><img v-bind:src='snap.cloudinary_url' />
       </router-link>
       <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>go to user profile for snap</p></router-link>

@@ -57,7 +57,6 @@
 
 <script>
 import axios from 'axios'
-import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -78,8 +77,6 @@ export default {
   },
   methods: {
     onSignupSubmit () {
-      // upload data to the server
-      console.log(this.signup)
       axios.post('/api/api/users/', this.signup).then(result => {
         console.log('signup data: ', result.data)
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
@@ -87,9 +84,6 @@ export default {
         console.log(err)
       })
     },
-    ...mapActions([
-      'obtainToken'
-    ]),
     onLoginSubmit (type) {
       // console.log('onLoginSubmit fired')
       this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
