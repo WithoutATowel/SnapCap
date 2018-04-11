@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><a class="modal-trigger" href="#post">Post</a></p>
+    <p v-if="$store.state.user"><a class="modal-trigger" href="#post">Post</a></p>
 
     <!-- Modal Structure -->
     <div id="post" class="modal">
