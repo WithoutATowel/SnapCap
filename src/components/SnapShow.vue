@@ -17,15 +17,16 @@ import Caption from './Caption.vue'
 import axios from 'axios'
 
 export default {
-  props: ['id', 'url', 'user', 'usercaps'],
+  props: ['id'],
   components: {
     Caption
   },
   data () {
     return {
-      captions: ['funny cat', 'funny dog', 'funny dude'],
       newCaption: '',
-
+      url: '',
+      user: '',
+      usercaps: []
     }
   },
   methods: {
@@ -43,6 +44,16 @@ export default {
         console.log(err.response)
       })
     }
+  },
+  mounted () {
+    console.log('mounted')
+    axios.get('/api/api/snaps/' + this.id + '/')
+      .then((response) => {
+        this.url = response.data.cloudinary_url
+        this.user = response.data.user
+        this.usercaps = response.data.usercaps
+        console.log('here is response.data (snaps): ', response.data)
+      })
   }
 }
 </script>

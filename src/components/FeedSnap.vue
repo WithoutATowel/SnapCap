@@ -7,9 +7,6 @@
     <div class="each-snap col s12">
       <router-link :to="{ name: 'SnapShow', params: {
           id: snap.id,
-          url: snap.cloudinary_url,
-          user: snap.user,
-          usercaps: snap.usercaps
         } }"><img v-bind:src='snap.cloudinary_url' />
       </router-link>
       <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>go to user profile for snap</p></router-link>

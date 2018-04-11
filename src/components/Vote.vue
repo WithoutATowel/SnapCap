@@ -4,7 +4,7 @@
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
       </div>
-      <div class="vote-num">{{ votes }}</div>
+      <div class="vote-num">{{ numOfVotes }}</div>
     </button>
   </div>
 
@@ -16,7 +16,7 @@ export default {
   props: ['votes', 'snap_id', 'cap_id', 'element_type'],
   data () {
     return {
-      data: 'NO DATA'
+      numOfVotes: 0
     }
   },
   methods: {
@@ -26,6 +26,7 @@ export default {
         axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           // console.log('vote picture return data: ', result)
+          ++this.numOfVotes;
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
             this.$modal.show('dialog', {
@@ -57,12 +58,40 @@ export default {
       if (type === 'cap') {
         axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
+          ++this.numOfVotes;
           console.log('vote picture return data: ', result.data)
         }).catch(err => {
-          console.log(err)
+          if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
+            this.$modal.show('dialog', {
+              title: 'Alert!',
+              text: 'You are only allowed to vote once per post.',
+              buttons: [
+                {
+                  title: 'OK',
+                  default: true
+                }
+              ]
+            })
+          }
+          if (err.response.data.non_field_errors[0] === 'Signature has expired.') {
+            this.$modal.show('dialog', {
+              title: 'Alert!',
+              text: 'You need to be logged in to do that',
+              buttons: [
+                {
+                  title: 'OK',
+                  default: true
+                }
+              ]
+            })
+          }
+          console.log(err.response)
         })
       }
     }
+  },
+  mounted () {
+    this.numOfVotes = this.votes
   }
 }
 // For checking authorization:
