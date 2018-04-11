@@ -61,7 +61,7 @@ export default {
       console.log(this.signup)
       axios.post('/api/api/users/', this.signup).then(result => {
         console.log('signup data: ', result.data)
-        // this.$store.dispatch('obtainToken', [this.login.username, this.login.password])
+        this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
       }).catch(err => {
         console.log(err)
       })
