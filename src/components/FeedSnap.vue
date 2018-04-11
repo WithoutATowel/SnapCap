@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col s1">
-        <Vote v-if="snap.usercaps[0]" v-bind:votes="snap.usercaps[0].votes" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
-        <Vote v-if="!snap.usercaps[0]" v-bind:votes="0" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
+        <Vote v-if="snap.votes" v-bind:votes="snap.votes" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
+        <Vote v-if="!snap.votes" v-bind:votes="0" v-bind:element_id="snap.id" v-bind:element_type="'snap'" />
     </div>
     <div class="each-snap col s12">
       <router-link :to="{ name: 'SnapShow', params: {

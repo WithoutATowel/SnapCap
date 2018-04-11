@@ -27,6 +27,7 @@ class Picture(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cloudinary_url = models.CharField(max_length=1000)
     category = models.CharField(max_length=20, choices=CATEGORY)
+    uploaded_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.cloudinary_url
