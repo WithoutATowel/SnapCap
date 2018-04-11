@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='profile-page'>
     <div class='row'>  <!-- Top Profile Row -->
       <div class='col s5'>  <!-- Pic Col Row -->
         <div class='row'>  <!-- Pic Row -->
@@ -17,9 +17,9 @@
         <!-- <h2 v-if='user' >{{ firstName() }} {{ user.last_name }}</h2> -->
         <h2 v-if='user' >{{ user.first_name }} {{ user.last_name }}</h2>
         <h4>Snap Points</h4>
-        <p># of Points</p>
+        <p>{{ this.totalSnapVotes }}</p>
         <h4>Cap Points</h4>
-        <p># of Points</p>
+        <p>{{ this.totalCapVotes }}</p>
       </div>
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
@@ -57,7 +57,9 @@ export default {
   },
   data () {
     return {
-      user: null
+      user: null,
+      totalSnapVotes: 0,
+      totalCapVotes: 0
     }
   },
   methods: {
@@ -68,9 +70,17 @@ export default {
           this.user = response.data
           console.log('here is profile page response.data: ', response.data)
           console.log('here is profile page friends: ', response.data.friends)
-          console.log('here is profile page picture_set: ', response.data.picture_set)
-          console.log('here is profile page usercaps_set: ', response.data.usercaps_set)
+          console.log('here is this.user.usercap_set: ', this.user.usercap_set)
+          this.getTotalVotes()
         })
+    },
+    getTotalVotes: function () {
+      this.user.usercap_set.forEach(cap => {
+        this.totalCapVotes += cap.votes
+      })
+      this.user.picture_set.forEach(snap => {
+        this.totalSnapVotes += snap.votes
+      })
     }
     // firstName: function () {
     //   if (user)  {
@@ -92,12 +102,9 @@ span {
   background: lightblue;
 }
 
-.row {
-  background: lightgrey;
-}
-
-.col {
-  background: darkgrey;
+.profile-page {
+  padding: 1em;
+  background-color: rgba(38, 232, 156, .4);
 }
 
 </style>

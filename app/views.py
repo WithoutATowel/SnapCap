@@ -83,6 +83,6 @@ def FriendsListView(request, user_id):
 
 # Get a list of user's caps that includes it's votes the snap's url and user
 def CapsListView(request, user_id):
-    usercaps = Usercap.objects.filter(user=user_id).values('picture', 'text', 'picture__cloudinary_url', 'picture__user').annotate(votes=Count('vote_caption')).order_by('-votes')
+    usercaps = Usercap.objects.filter(user=user_id).values('id', 'picture', 'text', 'picture__cloudinary_url', 'picture__user').annotate(votes=Count('vote_caption')).order_by('-votes')
     usercaps = json.dumps(list(usercaps))
     return HttpResponse(usercaps, content_type='application/json')

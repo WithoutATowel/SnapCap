@@ -2,7 +2,7 @@
   <div>
     <h5>{{ user_first }}'s Caps</h5>
     <div v-for='cap in usercaps'>
-      <Cap :cap='cap' />
+      <Cap class='cap' :cap='cap' />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
       axios.get(`/api/api/user/${this.id}/caps/`)
         .then((response) => {
           this.usercaps = response.data
-          console.log('here is capslist comp response.data: ', response.data)
+          // console.log('here is capslist comp response.data: ', response.data)
         })
     }
   }
@@ -39,6 +39,8 @@ export default {
 
 <style scoped>
 
-
+.cap {
+  margin: 1em 0;
+}
 
 </style>

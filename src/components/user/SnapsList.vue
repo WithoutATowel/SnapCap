@@ -2,7 +2,7 @@
   <div>
     <h5>{{ user_first }}'s Snaps</h5>
     <div v-for='snap in snaps'>
-      <Snap :snap='snap' />
+      <Snap class='snap' :snap='snap' />
     </div>
   </div>
 </template>
@@ -21,6 +21,8 @@ export default {
 
 <style scoped>
 
-
+.snap {
+  margin: 1em 0;
+}
 
 </style>
