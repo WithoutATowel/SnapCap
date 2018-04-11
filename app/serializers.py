@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Profile, Picture, Usercap, Vote_Picture, Vote_Caption, Friendship #, Card
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator, UniqueTogetherValidator
+from django.db.models import Count
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +22,7 @@ class UsercapSerializer(serializers.ModelSerializer):
 
 
 class PictureSerializer(serializers.ModelSerializer):
-    usercaps = UsercapSerializer(many=True, read_only=True, allow_null=True)
+    usercaps = serializers.SerializerMethodField()
     votes = serializers.SerializerMethodField()
 
     class Meta:
@@ -30,6 +31,10 @@ class PictureSerializer(serializers.ModelSerializer):
 
     def get_votes(self, obj):
         return obj.vote_picture_set.count()
+
+    def get_usercaps(self, obj):
+        captions = obj.usercaps.all().annotate(votes=Count('vote_caption')).order_by('-votes')
+        return UsercapSerializer(captions, many=True).data # read_only=True, allow_null=True
 
 
 class Vote_PictureSerializer(serializers.ModelSerializer):
