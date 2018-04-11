@@ -62,13 +62,15 @@ export default {
       })
     },
     postSnap (url, category) {
-      // console.log('user: ', $store.state.user.id)
+      console.log('user: ', this.$store.state.user.id)
       console.log('url: ', url)
       console.log('category: ', category)
       axios.post('/api/api/snaps/', {
-        user: 5,
+        user: this.$store.state.user.id,
         cloudinary_url: url,
         category: category
+      }, {
+        headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
         console.log('Snap created')
       })
