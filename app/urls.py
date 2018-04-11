@@ -11,7 +11,6 @@ router.register('snaps', views.PictureView)
 router.register('caps', views.UsercapView)
 router.register('vote_picture', views.Vote_PictureView)
 router.register('vote_caption', views.Vote_CaptionView)
-router.register('friends', views.FriendshipView)
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -19,8 +18,9 @@ urlpatterns = [
     url(r'^auth/obtain_token/', obtain_jwt_token),
     url(r'^auth/refresh_token/', refresh_jwt_token),
     # url('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/user/<int:user_id>/friends/', views.FriendsListView, name='friends_list'),
     path('api/', include(router.urls)),
-    
+
     # path('login/', views.login, name='login'),
     # path('logout/', views.logout, name='logout'),
     # path('profile/<int:profile_id>/', views.profile, name='profile'),

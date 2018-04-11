@@ -34,6 +34,10 @@ body {
   justify-content: center;
 }
 
+img {
+  width: 40%;
+}
+
 .snap-show {
   padding: 1em;
   background-color: rgba(38, 232, 156, .4);

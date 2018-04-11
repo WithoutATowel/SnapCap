@@ -24,7 +24,7 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FriendsList v-if='user' :friends='user.friends' :user_first='user.first_name' />
+        <FriendsList v-if='user' :id='user.id' :user_first='user.first_name' />
       </div>
       <div class='col s4'>
         <SnapsList v-if='user' :snaps='user.picture_set' :user_first='user.first_name' />
