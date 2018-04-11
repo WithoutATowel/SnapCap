@@ -8,7 +8,7 @@ from django.core import serializers
 import requests
 from rest_framework import viewsets, permissions
 from rest_framework.generics import CreateAPIView
-from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, FriendshipSerializer, UserSerializer
+from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, UserSerializer, FriendshipSerializer
 from django.db.models import Count
 from datetime import date, timedelta
 
@@ -71,4 +71,11 @@ def jwt_response_payload_handler(token, user=None, request=None):
         'token': token,
         'user': UserSerializer(user, context={'request': request}).data
     }
-    
+
+def FriendsListView(request, user_id):
+    friend_ids = Friendship.objects.filter(user=user_id)
+    friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids])
+    # friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids]).values('first_name', 'last_name').annotate(profile_img_url=)
+    friends = serializers.serialize('json', list(friends), fields=('id', 'first_name', 'last_name'))
+    return HttpResponse(friends, content_type='application/json')
+  
