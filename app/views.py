@@ -41,6 +41,7 @@ class PictureView(viewsets.ModelViewSet):
         queryset = queryset.annotate(votes=Count('vote_picture')).order_by('-votes')
         return queryset
 
+
 class UsercapView(viewsets.ModelViewSet):
     queryset = Usercap.objects.all()
     serializer_class = UsercapSerializer
@@ -78,4 +79,3 @@ def FriendsListView(request, user_id):
     # friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids]).values('first_name', 'last_name').annotate(profile_img_url=)
     friends = serializers.serialize('json', list(friends), fields=('id', 'first_name', 'last_name'))
     return HttpResponse(friends, content_type='application/json')
-  
