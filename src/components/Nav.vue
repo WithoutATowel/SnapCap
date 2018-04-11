@@ -12,7 +12,7 @@
           <div class="col">
             <Post />
           </div>
-          <router-link to='/profile'>Profile</router-link>
+          <router-link v-if="$store.state.user" to='/profile'>Profile</router-link>
           <Search />
         </div>
       </div>
