@@ -9,6 +9,8 @@ import requests
 from rest_framework import viewsets, permissions
 from rest_framework.generics import CreateAPIView
 from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, FriendshipSerializer, UserSerializer
+from django.db.models import Count
+from datetime import date, timedelta
 
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
@@ -16,7 +18,7 @@ class ProfileView(viewsets.ModelViewSet):
     # Need to set permissions so that a user can only edit their own
 
 class PictureView(viewsets.ModelViewSet):
-    queryset = Picture.objects.all()
+    queryset = Picture.objects.filter(uploaded_date__gt=date.today()-timedelta(days=7))
     serializer_class = PictureSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -28,8 +30,8 @@ class PictureView(viewsets.ModelViewSet):
     # Picture.objects.filter(id__in = [cap.picture.id for cap in matching_caps])
 
     def get_queryset(self):
-        # __icontains() for cap text?
-        queryset = Picture.objects.all()
+        # __icontains() for cap text + search?
+        queryset = Picture.objects.all().filter(uploaded_date__gt=date.today()-timedelta(days=7))
         username = self.request.query_params.get('username', None)
         if 'category' in self.kwargs.keys():
             if self.kwargs['category'] == 'friends':
@@ -39,6 +41,7 @@ class PictureView(viewsets.ModelViewSet):
                 queryset = queryset.filter(category = self.kwargs['category'])
         elif username is not None:
             queryset = queryset.filter(user__username = 'username')
+        queryset = queryset.annotate(votes=Count('vote_picture')).order_by('-votes')[:25]
         return queryset
 
 class UsercapView(viewsets.ModelViewSet):
