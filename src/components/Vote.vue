@@ -14,7 +14,7 @@
 <script>
 import axios from 'axios'
 export default {
-  props: ['votes', 'element_id', 'element_type'],
+  props: ['votes', 'snap_id', 'cap_id', 'element_type'],
   data () {
     return {
       data: 'NO DATA'
@@ -24,7 +24,7 @@ export default {
     upVote (type) {
       // /api/vote_picture/
       if (type === 'snap') {
-        axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.element_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+        axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           console.log('vote picture return data: ', result.data)
         }).catch(err => {
@@ -32,15 +32,13 @@ export default {
         })
       }
       if (type === 'cap') {
-        console.log('You clicked to add a vote for a caption.... jokes on you, I haven\'t gotten ther yet')
-        // axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.element_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
-        // .then(result => {
-        //   console.log('vote picture return data: ', result.data)
-        // }).catch(err => {
-        //   console.log(err)
-        // })
+        axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id},  {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
+        .then(result => {
+          console.log('vote picture return data: ', result.data)
+        }).catch(err => {
+          console.log(err)
+        })
       }
-
     }
   }
 }

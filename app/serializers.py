@@ -47,7 +47,7 @@ class Vote_PictureSerializer(serializers.ModelSerializer):
 class Vote_CaptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vote_Caption
-        fields = ('id', 'user', 'picture')
+        fields = ('id', 'user', 'picture', 'usercap')
         validators = [
             UniqueTogetherValidator(
                 queryset=Vote_Caption.objects.all(),

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Vote v-bind:votes='cap.votes' v-bind:element_id="cap.id" v-bind:element_type="'cap'"  />
+    <Vote v-bind:votes='cap.votes' v-bind:snap_id="cap.picture" v-bind:cap_id="cap.id" v-bind:element_type="'cap'"  />
     <div class='caption-box'>
       <p>"{{ cap.text }}"</p>
       <p>number of votes: {{ cap.votes }}</p>
