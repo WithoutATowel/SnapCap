@@ -16,11 +16,6 @@ export default {
   props: ['id', 'url', 'user', 'usercaps'],
   components: {
     Caption
-  },
-  data () {
-    return {
-      captions: ['funny cat', 'funny dog', 'funny dude']
-    }
   }
 }
 </script>

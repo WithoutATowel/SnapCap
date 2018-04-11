@@ -15,11 +15,6 @@
 import axios from 'axios'
 export default {
   props: ['votes', 'element_id', 'element_type'],
-  data () {
-    return {
-      data: 'NO DATA'
-    }
-  },
   methods: {
     upVote (type) {
       // /api/vote_picture/

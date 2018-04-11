@@ -17,11 +17,6 @@ export default {
   props: ['cap'],
   components: {
     Vote
-  },
-  data () {
-    return {
-      data: 'NO DATA'
-    }
   }
 }
 </script>

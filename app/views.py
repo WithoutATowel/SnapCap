@@ -11,6 +11,7 @@ from rest_framework.generics import CreateAPIView
 from .serializers import ProfileSerializer, PictureSerializer, UsercapSerializer, Vote_PictureSerializer, Vote_CaptionSerializer, UserSerializer, FriendshipSerializer
 from django.db.models import Count
 from datetime import date, timedelta
+import json
 
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
@@ -78,4 +79,11 @@ def FriendsListView(request, user_id):
     # friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids]).values('first_name', 'last_name').annotate(profile_img_url=)
     friends = serializers.serialize('json', list(friends), fields=('id', 'first_name', 'last_name'))
     return HttpResponse(friends, content_type='application/json')
-  
+
+def CapsListView(request, user_id):
+    usercaps = Usercap.objects.filter(user=user_id).values('picture', 'text', 'picture__cloudinary_url', 'picture__user')
+    # snap_in_Usercap = Picture.objects.filter(id__in = [usercap.picture for usercap in usercaps])
+    # friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids]).values('first_name', 'last_name').annotate(profile_img_url=)
+    # usercaps = serializers.serialize('json', list(usercaps), fields=('picture', 'text', 'picture_set'))
+    usercaps = json.dumps(list(usercaps))
+    return HttpResponse(usercaps, content_type='application/json')

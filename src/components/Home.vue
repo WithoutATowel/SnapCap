@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="row">
     <div class="row tabs-row">
       <input id="all-tab" type="radio" name="tabs" v-on:click="getFeed('all')" checked>
