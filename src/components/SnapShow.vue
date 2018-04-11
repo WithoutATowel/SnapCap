@@ -40,6 +40,8 @@ export default {
       }, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
+        this.newCaption = ''
+        this.usercaps.push(response.data)
         console.log('Cap created', response.data)
       }).catch((err) => {
         console.log(err.response)
