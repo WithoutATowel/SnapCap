@@ -63,7 +63,7 @@ class FriendshipSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # Fields: https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User    
+    # Fields: https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User
     password = serializers.CharField(write_only=True)
     username = serializers.CharField(
         max_length=150,
@@ -72,12 +72,15 @@ class UserSerializer(serializers.ModelSerializer):
             message='That username already exists, bro',
         )]
     )
+    friends = FriendshipSerializer(many=True, read_only=True)
+    picture_set = PictureSerializer(many=True, read_only=True, allow_null=True)
+    usercap_set = UsercapSerializer(many=True, read_only=True, allow_null=True)
 
     def create(self, validated_data):
         user = User.objects.create(
-            username=validated_data['username'], 
-            first_name=validated_data['first_name'], 
-            last_name=validated_data['last_name'], 
+            username=validated_data['username'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
             email=validated_data['email']
         )
         user.set_password(validated_data['password'])
@@ -86,6 +89,6 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'friends', 'picture_set', 'usercap_set')
         write_only_fields = ('password', )
         read_only_fields = ('id', )

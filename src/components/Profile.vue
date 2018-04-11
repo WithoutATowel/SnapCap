@@ -65,7 +65,13 @@ export default {
       axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
           this.snaps = response.data
-          console.log(response.data)
+          console.log('here is profile page response.data: ', response.data)
+          console.log('here is profile page friends: ', response.data.friends)
+          console.log('here is profile page 1st friend id: ', response.data.friends[0].friend)
+          console.log('here is profile page picture_set: ', response.data.picture_set)
+          console.log('here is profile page 1st picture_set url: ', response.data.picture_set[0].cloudinary_url)
+          console.log('here is profile page usercaps_set: ', response.data.usercaps_set)
+          console.log('here is profile page 1st usercaps_set text: ', response.data.usercaps_set[0].text)
         })
     }
   }
