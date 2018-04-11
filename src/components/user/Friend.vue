@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Friend Component</p>
+    <p>friend id: {{ friend.friend }}</p>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 // import Vote from './Vote.vue'
 
 export default {
-  // props: ['cap'],
+  props: ['friend'],
   // components: {
   //   Friend
   // },

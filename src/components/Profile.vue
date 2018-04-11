@@ -14,7 +14,8 @@
         </div>
       </div>
       <div class='col s7'>
-        <h2>User Name here #{{ id }}</h2>
+        <!-- <h2 v-if='user' >{{ firstName() }} {{ user.last_name }}</h2> -->
+        <h2 v-if='user' >{{ user.first_name }} {{ user.last_name }}</h2>
         <h4>Snap Points</h4>
         <p># of Points</p>
         <h4>Cap Points</h4>
@@ -23,13 +24,13 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FriendsList />
+        <FriendsList v-if='user' :friends='user.friends' :user_first='user.first_name' />
       </div>
       <div class='col s4'>
-        <SnapsList />
+        <SnapsList v-if='user' :snaps='user.picture_set' :user_first='user.first_name' />
       </div>
       <div class='col s4'>
-        <CapsList />
+        <CapsList v-if='user' :usercaps='user.usercap_set' :user_first='user.first_name' />
       </div>
     </div>  <!-- END Bottom Profile Row -->
   </div>
@@ -64,16 +65,20 @@ export default {
       console.log('clicked on getUser', this.id)
       axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
-          this.snaps = response.data
+          this.user = response.data
           console.log('here is profile page response.data: ', response.data)
           console.log('here is profile page friends: ', response.data.friends)
-          console.log('here is profile page 1st friend id: ', response.data.friends[0].friend)
           console.log('here is profile page picture_set: ', response.data.picture_set)
-          console.log('here is profile page 1st picture_set url: ', response.data.picture_set[0].cloudinary_url)
           console.log('here is profile page usercaps_set: ', response.data.usercaps_set)
-          console.log('here is profile page 1st usercaps_set text: ', response.data.usercaps_set[0].text)
         })
     }
+    // firstName: function () {
+    //   if (user)  {
+    //     return user.first_name
+    //   } else {
+    //     return ''
+    //   }
+    // }
   }
 }
 </script>

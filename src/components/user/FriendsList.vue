@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h5>USERNAME's Friends</h5>
-    <Friend />
+    <h5>{{ user_first }}'s Friends</h5>
+    <div v-for='friend in friends'>
+      <Friend :friend='friend' />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 import Friend from './Friend.vue'
 
 export default {
-  // props: ['cap'],
+  props: ['user_first', 'friends'],
   components: {
     Friend
   },

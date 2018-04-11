@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h5>USERNAME's Snaps</h5>
-    <Snap />
+    <h5>{{ user_first }}'s Snaps</h5>
+    <div v-for='snap in snaps'>
+      <Snap :snap='snap' />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 import Snap from './Snap.vue'
 
 export default {
-  // props: ['cap'],
+  props: ['user_first', 'snaps'],
   components: {
     Snap
   },
