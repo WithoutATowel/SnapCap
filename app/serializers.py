@@ -12,22 +12,26 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class UsercapSerializer(serializers.ModelSerializer):
     votes = serializers.SerializerMethodField()
+    submitter = serializers.SerializerMethodField()
 
     class Meta:
         model = Usercap
-        fields = ('id', 'user', 'picture', 'text', 'votes')
+        fields = ('id', 'user', 'submitter', 'picture', 'text', 'votes')
 
     def get_votes(self, obj):
         return obj.vote_caption_set.count()
 
+    def get_submitter(self, obj):
+        return obj.user.username
 
 class PictureSerializer(serializers.ModelSerializer):
     usercaps = serializers.SerializerMethodField()
     votes = serializers.SerializerMethodField()
+    submitter = serializers.SerializerMethodField()
 
     class Meta:
         model = Picture
-        fields = ('id', 'user', 'cloudinary_url', 'category', 'usercaps', 'votes')
+        fields = ('id', 'user', 'submitter', 'cloudinary_url', 'category', 'usercaps', 'votes')
 
     def get_votes(self, obj):
         return obj.vote_picture_set.count()
@@ -35,6 +39,9 @@ class PictureSerializer(serializers.ModelSerializer):
     def get_usercaps(self, obj):
         captions = obj.usercaps.all().annotate(votes=Count('vote_caption')).order_by('-votes')
         return UsercapSerializer(captions, many=True).data # read_only=True, allow_null=True
+
+    def get_submitter(self, obj):
+        return obj.user.username
 
 
 class Vote_PictureSerializer(serializers.ModelSerializer):
