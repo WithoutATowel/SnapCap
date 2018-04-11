@@ -13,7 +13,7 @@ import VModal from 'vue-js-modal'
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
-Vue.use(VModal)
+Vue.use(VModal, { dialog: true })
 
 const store = new Vuex.Store({
   state: {

@@ -11,6 +11,7 @@
     <footer>
       <Footer />
     </footer>
+    <v-dialog/>
   </div>
 </template>
 
@@ -24,17 +25,14 @@ export default {
       user = JSON.parse(user)
       this.$store.state.jwt = token
       this.$store.state.user = user
+      // this.$store.dispatch('refreshToken')
+      this.$store.dispatch('inspectToken')
     } else {
       localStorage.removeItem('t')
       localStorage.removeItem('u')
       this.$store.dispatch('logout')
     }
   }
-  // data () {
-  //   return {
-  //     snaps: []
-  //   }
-  // }
 }
 </script>
 
@@ -83,6 +81,9 @@ select {
 #app a {
   color: #42b983;
   /* text-decoration: none; */
+}
+button:hover {
+  cursor: pointer;
 }
 .main-modal {
   display: flex;
