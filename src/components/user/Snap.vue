@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='snap-container'>
     <router-link :to="{ name: 'SnapShow', params: {
         id: snap.id,
         url: snap.cloudinary_url,
@@ -48,6 +48,11 @@ export default {
 
 img {
   width: 50%;
+}
+
+.snap-container {
+  padding: 1em;
+  background: #FFD216;
 }
 
 </style>

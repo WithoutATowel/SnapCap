@@ -2,7 +2,7 @@
   <div>
     <h5>{{ user_first }}'s Friends</h5>
     <div v-for='friend in friends'>
-      <Friend :friend='friend' />
+      <Friend class='friend' :friend='friend' />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
       axios.get(`/api/api/user/${this.id}/friends/`)
         .then((response) => {
           this.friends = response.data
-          console.log('here is friendslist comp response.data: ', response.data)
+          // console.log('here is friendslist comp response.data: ', response.data)
         })
     }
   }
@@ -39,6 +39,8 @@ export default {
 
 <style scoped>
 
-
+.friend {
+  margin: 1em 0;
+}
 
 </style>
