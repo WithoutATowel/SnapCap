@@ -4,7 +4,7 @@
       <div class='col s5'>  <!-- Pic Col Row -->
         <div class='row'>  <!-- Pic Row -->
           <div class='col s12'>
-            <img v-if='user' v-bind:src="user.profile.profile_img" />
+            <img v-if="user !== null" v-bind:src="user.profile.profile_img" />
           </div>
         </div>
         <div class='row'>  <!-- Edit Profile Component Row -->
