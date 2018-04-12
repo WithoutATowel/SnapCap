@@ -8,7 +8,6 @@
       </div>
       <div class='col s9'>
         <div class='row'>
-          <Vote class='vote' v-bind:votes='cap.votes' v-bind:snap_id="cap.picture" v-bind:cap_id="cap.id" v-bind:element_type="'cap'" />
           <p>{{ cap.text }}</p>
         </div>
         <div class='row'>
