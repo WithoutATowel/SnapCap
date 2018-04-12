@@ -9,7 +9,10 @@
         </div>
         <div class='row'>  <!-- Edit Profile Component Row -->
           <div class='col s12'>
-            <UpdateProfileSection />
+            <UpdateProfileSection
+              v-if='parseInt(this.$route.params.id) === this.$store.state.user.id'
+              v-bind='{getUser}'
+            />
           </div>
         </div>
       </div>
@@ -28,7 +31,7 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FriendsList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
+        <FollowingList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
       </div>
       <div class='col s4'>
         <SnapsList v-if='user' :snaps='this.user.picture_set' :username='this.user.username' />
@@ -43,7 +46,7 @@
 <script>
 
 import UpdateProfileSection from './user/UpdateProfileSection'
-import FriendsList from './user/FriendsList'
+import FollowingList from './user/FollowingList'
 import SnapsList from './user/SnapsList'
 import CapsList from './user/CapsList'
 import axios from 'axios'
@@ -55,7 +58,7 @@ export default {
   props: ['id'],
   components: {
     UpdateProfileSection,
-    FriendsList,
+    FollowingList,
     SnapsList,
     CapsList
   },
@@ -69,12 +72,11 @@ export default {
   },
   methods: {
     getUser: function () {
-      console.log('clicked on getUser', this.id)
+      // console.log('clicked on getUser', this.id)
       axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
           this.user = response.data
-          console.log('here is profile page response.data: ', response.data)
-          console.log('here is this.user.picture_set: ', this.user.picture_set)
+          // console.log('here is profile page response.data: ', response.data)
           this.getTotalVotes()
           this.checkIsFriend()
         })
@@ -118,12 +120,10 @@ export default {
 
 <style scoped>
 
-/*span {
-  display: inline-block;
-  height: 15em;
-  width: 15em;
-  background: lightblue;
-}*/
+
+img {
+  max-width: 50%;
+}
 
 .profile-page {
   padding: 1em;
