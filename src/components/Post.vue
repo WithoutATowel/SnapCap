@@ -6,7 +6,7 @@
       <div class="main-modal">
         <form v-on:submit.prevent="onSubmit">
           <div class="modal-content">
-            <input type="file" id="file" placeholder="image" />
+            <input type="file" id="file" name="file" placeholder="image" />
             <select id="category" v-model="category">
               <option value="" disabled>Category</option>
               <option value="animals">Animals</option>
