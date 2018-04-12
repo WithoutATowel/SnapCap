@@ -77,7 +77,7 @@ def jwt_response_payload_handler(token, user=None, request=None):
 def FriendsListView(request, user_id):
     friend_ids = Friendship.objects.filter(user=user_id)
     friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids])
-    friends = serializers.serialize('json', list(friends), fields=('id', 'first_name', 'last_name'))
+    friends = serializers.serialize('json', list(friends), fields=('id', 'username'))
     return HttpResponse(friends, content_type='application/json')
 
 # Get a list of user's caps that includes it's votes the snap's url and user

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>{{ user_first }}'s Friends</h5>
+    <h5>{{ username }}'s Friends</h5>
     <div v-for='friend in friends'>
       <Friend class='friend' :friend='friend' />
     </div>
@@ -16,7 +16,7 @@ export default {
   mounted () {
     this.getFriendsList()
   },
-  props: ['user_first', 'id', 'getUser'],
+  props: ['username', 'id', 'getUser'],
   components: {
     Friend
   },
@@ -27,11 +27,18 @@ export default {
   },
   methods: {
     getFriendsList: function () {
-      axios.get(`/api/api/user/${this.id}/friends/`)
+      axios.get(`/api/api/user/${this.$route.params.id}/friends/`)
         .then((response) => {
           this.friends = response.data
-          // console.log('here is friendslist comp response.data: ', response.data)
+          console.log('here is friends', response.data)
         })
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (from !== to) {
+        this.getFriendsList()
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>{{ user_first }}'s Caps</h5>
+    <h5>{{ username }}'s Caps</h5>
     <div v-for='cap in usercaps'>
       <Cap class='cap' :cap='cap' />
     </div>
@@ -16,7 +16,7 @@ export default {
   mounted () {
     this.getCapsList()
   },
-  props: ['user_first', 'id'],
+  props: ['username', 'id'],
   components: {
     Cap
   },
@@ -27,11 +27,17 @@ export default {
   },
   methods: {
     getCapsList: function () {
-      axios.get(`/api/api/user/${this.id}/caps/`)
+      axios.get(`/api/api/user/${this.$route.params.id}/caps/`)
         .then((response) => {
           this.usercaps = response.data
-          // console.log('here is capslist comp response.data: ', response.data)
         })
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (from !== to) {
+        this.getCapsList()
+      }
     }
   }
 }
