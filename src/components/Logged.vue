@@ -83,8 +83,7 @@ export default {
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
         let profilePicUrl = 'https://www.avatarapi.com/js.aspx?email=' + result.data.email + '&size=200'
         axios.get(profilePicUrl).then(response => {
-          var profilePic = response.data.match(/(https?:\/\/[^\s']+)/g) ? 
-            response.data.match(/(https?:\/\/[^\s']+)/g)[1] : null
+          var profilePic = response.data.match(/(https?:\/\/[^\s']+)/g) ? response.data.match(/(https?:\/\/[^\s']+)/g)[1] : null
           if (profilePic) {
             axios.put('api/api/profile/' + result.data.profile.id + '/', {
               user: result.data.id,

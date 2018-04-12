@@ -39,8 +39,8 @@ export default {
     }
   },
   watch: {
-    snap: function(newVal, oldVal) {
-      this.getTopSnap();
+    snap: function (newVal, oldVal) {
+      this.getTopSnap()
     }
   }
 }
