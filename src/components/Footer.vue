@@ -7,7 +7,7 @@
 <style scoped>
 
 .footer {
-  padding: 4em;
+  padding: .1em;
   display: flex;
   justify-content: center;
   background: #730046;
