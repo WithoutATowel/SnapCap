@@ -101,12 +101,12 @@ export default {
     toggleFollow: function () {
       axios.post(`/api/api/friends/${this.$store.state.user.id}/${this.$route.params.id}/`, {}, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
-      }).then( (response) => {
+      }).then((response) => {
         this.$store.state.user = response.data
         localStorage.u = response.data
-        this.isFriend = !this.isFriend 
+        this.isFriend = !this.isFriend
       })
-    },
+    }
   },
   watch: {
     '$route' (to, from) {
