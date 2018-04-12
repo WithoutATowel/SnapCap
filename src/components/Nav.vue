@@ -12,7 +12,7 @@
           <div class="col">
             <Post />
           </div>
-          <router-link v-if="$store.state.user" to='/profile'>Profile</router-link>
+          <router-link v-if="$store.state.user" :to="{ name: 'Profile', params: { id: $store.state.user.id } }">Profile</router-link>
           <Search />
         </div>
       </div>

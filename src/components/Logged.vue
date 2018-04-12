@@ -67,7 +67,7 @@ export default {
         'first_name': '',
         'last_name': '',
         'email': '',
-        'password': '',
+        'password': ''
         // 'profile': {"user":'', "profile_img":''}
       },
       login: {
@@ -79,7 +79,7 @@ export default {
   methods: {
     onSignupSubmit () {
       axios.post('/api/api/users/', this.signup).then(result => {
-        this.$modal.hide("signup")
+        this.$modal.hide('signup')
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
         let profilePicUrl = 'https://www.avatarapi.com/js.aspx?email=' + result.data.email + '&size=200'
         axios.get(profilePicUrl).then(response => {
@@ -87,7 +87,7 @@ export default {
           if (profilePic === 'undefined') {
             axios.put('api/api/profile/' + result.data.profile.id, {
               user: result.data.id,
-              profile_img: "http://www.everythingjustrocks.com/wp-content/uploads/default.png"
+              profile_img: 'http://www.everythingjustrocks.com/wp-content/uploads/default.png'
             })
           } else {
             axios.put('api/api/profile/' + result.data.profile.id + '/', {
@@ -97,7 +97,7 @@ export default {
               headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
             })
           }
-        });
+        })
       }).catch(err => {
         console.log(err.response)
       })

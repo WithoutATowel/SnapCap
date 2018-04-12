@@ -7,6 +7,7 @@ from django.core.management import call_command
 
 def load_fixture(apps, schema_editor):
     call_command('loaddata', 'users', app_label='app')
+    call_command('loaddata', 'profiles', app_label='app')
     call_command('loaddata', 'pictures', app_label='app')
     call_command('loaddata', 'friends', app_label='app')
     call_command('loaddata', 'usercaps', app_label='app')
