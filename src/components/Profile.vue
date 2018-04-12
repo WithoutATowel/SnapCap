@@ -4,7 +4,7 @@
       <div class='col s5'>  <!-- Pic Col Row -->
         <div class='row'>  <!-- Pic Row -->
           <div class='col s12'>
-            <img v-bind:src="user.profile.profile_img" />
+            <img v-if='user' v-bind:src="user.profile.profile_img" />
           </div>
         </div>
         <div class='row'>  <!-- Edit Profile Component Row -->
@@ -18,7 +18,7 @@
       </div>
       <div class='col s7'>
         <!-- <h2 v-if='user' >{{ firstName() }} {{ user.last_name }}</h2> -->
-        <h2 v-if='user' >{{ user.username }}</h2>
+        <h2 v-if='user'>{{ user.username }}</h2>
         <h4>Snap Points</h4>
         <p>{{ this.totalSnapVotes }}</p>
         <h4>Cap Points</h4>
@@ -27,7 +27,7 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FollowersList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
+        <FollowingList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
       </div>
       <div class='col s4'>
         <SnapsList v-if='user' :snaps='this.user.picture_set' :username='this.user.username' />
@@ -42,7 +42,7 @@
 <script>
 
 import UpdateProfileSection from './user/UpdateProfileSection'
-import FollowersList from './user/FollowersList'
+import FollowingList from './user/FollowingList'
 import SnapsList from './user/SnapsList'
 import CapsList from './user/CapsList'
 import axios from 'axios'
@@ -54,7 +54,7 @@ export default {
   props: ['id'],
   components: {
     UpdateProfileSection,
-    FollowersList,
+    FollowingList,
     SnapsList,
     CapsList
   },

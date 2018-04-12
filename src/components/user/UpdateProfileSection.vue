@@ -1,7 +1,7 @@
 <template>
   <div>
     <ChangeProfilePic v-bind='{getUser}' />
-    <EditProfile />
+    <!-- <EditProfile /> -->
   </div>
 </template>
 

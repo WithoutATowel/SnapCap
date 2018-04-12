@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h5>{{ username }}'s Followers</h5>
+    <h5>{{ username }} is following</h5>
     <div v-for='friend in friends'>
-      <Follower class='friend' :friend='friend' />
+      <Following class='friend' :friend='friend' />
     </div>
   </div>
 </template>
 
 <script>
 
-import Follower from './Follower.vue'
+import Following from './Following.vue'
 import axios from 'axios'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
   props: ['username', 'id', 'getUser'],
   components: {
-    Follower
+    Following
   },
   data () {
     return {
