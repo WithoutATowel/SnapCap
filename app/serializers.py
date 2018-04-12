@@ -13,11 +13,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 class UsercapSerializer(serializers.ModelSerializer):
     votes = serializers.SerializerMethodField()
     submitter = serializers.SerializerMethodField()
-    profile = serializers.SerializerMethodField()
 
     class Meta:
         model = Usercap
-        fields = ('id', 'user', 'submitter', 'picture', 'text', 'votes', 'profile')
+        fields = ('id', 'user', 'submitter', 'picture', 'text', 'votes')
 
     def get_votes(self, obj):
         return obj.vote_caption_set.count()
@@ -25,8 +24,6 @@ class UsercapSerializer(serializers.ModelSerializer):
     def get_submitter(self, obj):
         return obj.user.username
 
-    def get_profile(self, obj):
-        return obj.profile.id
 
 class PictureSerializer(serializers.ModelSerializer):
     usercaps = serializers.SerializerMethodField()
