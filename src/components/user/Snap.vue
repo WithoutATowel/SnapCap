@@ -17,8 +17,6 @@
 
 <script>
 
-// import Vote from './Vote.vue'
-
 export default {
   mounted () {
     this.getTopSnap()

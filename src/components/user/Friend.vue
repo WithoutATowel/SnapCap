@@ -1,6 +1,7 @@
 <template>
   <div class='friend-container'>
-    <router-link :to="{ name: 'Profile', params: { id: friend.pk } }"><p>go to user profile for snap ~~CHANGE THIS TO THEIR IMG~~</p></router-link>
+    <router-link :to="{ name: 'Profile', params: { id: friend.pk } }">
+      <p>go to user profile for snap ~~CHANGE THIS TO THEIR IMG~~</p>
     </router-link>
     <p>{{ friend.fields.first_name }} {{ friend.fields.last_name }}</p>
   </div>
@@ -9,7 +10,7 @@
 <script>
 
 export default {
-  props: ['friend']
+  props: ['friend', 'getUser']
 }
 </script>
 
