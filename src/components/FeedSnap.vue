@@ -11,7 +11,7 @@
               id: snap.id,
             } }"><img v-bind:src='snap.cloudinary_url' />
           </router-link>
-          <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>Posted by: {{snap.submitter}}</p></router-link>
+          <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>Snapped by: {{snap.submitter}}</p></router-link>
         </div>
 
         <div class="col s12 m12 l7">
@@ -22,7 +22,7 @@
             <div class="col s7">
               <p v-if='this.topCap' class="top-cap-details">
                 Votes: {{ this.topCap.votes }} |
-                <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }">Posted by: {{this.topCap.user}}</router-link>
+                <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }">Capped by: {{this.topCap.submitter}}</router-link>
               </p>
             </div>
           </div>
