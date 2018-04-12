@@ -29,11 +29,6 @@
 <script>
 import axios from 'axios'
 
-// Cloudinary credentials:
-// Email: snapcap.ga@gmail.com
-// Gmail password: capthemsnaps
-// Cloudinary password: capthemsnaps
-
 export default {
   data () {
     return {
@@ -41,7 +36,7 @@ export default {
       user: 'NO USER',
       cloudinary: {
         uploadPreset: 'urj196d3',
-        apiKey: '697457472426285',
+        apiKey: process.env.Cloudinary_API_KEY,
         cloudName: 'https://api.cloudinary.com/v1_1/dpa63jimp/upload'
       },
       thumbs: []
@@ -63,9 +58,6 @@ export default {
       })
     },
     postSnap (url, category) {
-      console.log('user: ', this.$store.state.user.id)
-      console.log('url: ', url)
-      console.log('category: ', category)
       axios.post('/api/api/snaps/', {
         user: this.$store.state.user.id,
         cloudinary_url: url,
@@ -73,7 +65,7 @@ export default {
       }, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
-        console.log('Snap created')
+        // console.log('Snap created')
       })
     },
     show () {
