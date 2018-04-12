@@ -26,5 +26,10 @@ export default {
   display: inline-block;
   margin-left: 5px;
 }
+.caption-box a {
+  background: rgba(255,255,255,.6);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
 
 </style>

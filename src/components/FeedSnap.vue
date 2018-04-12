@@ -11,13 +11,13 @@
               id: snap.id,
             } }"><img v-bind:src='snap.cloudinary_url' />
           </router-link>
-          <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p>Snapped by: {{snap.submitter}}</p></router-link>
+          <router-link :to="{ name: 'Profile', params: { id: snap.user } }"><p class="snapped-by"><span>Snapped by: {{snap.submitter}}</span></p></router-link>
         </div>
 
         <div class="col s12 m12 l7">
           <div class="top-cap-header row">
             <div class="col s5">
-              <h5>Top Caption:</h5>
+              <h5>Top Caption</h5>
             </div>
             <div class="col s7">
               <p v-if='this.topCap' class="top-cap-details">
@@ -27,10 +27,13 @@
             </div>
           </div>
           <div class='top-cap-box'>
-            <h3 v-if='this.topCap'>"{{ this.topCap.text }}"</h3>
-            <h3 v-else>No Captions Yet...</h3>
+            <h4 v-if='this.topCap'>"{{ this.topCap.text }}"</h4>
+            <h4 v-else>No Captions Yet...</h4>
           </div>
           <div class="row add-cap">
+            <div class="top-cap-header row">
+              <h5>Cap This Snap</h5>
+            </div>
             <form v-on:submit.prevent="submitCap" >
               <div>
                 <input type="text" v-model="newCaption" placeholder="Your caption here..." />
@@ -100,7 +103,7 @@ export default {
 </script>
 
 <style scoped>
-h3 {
+h4 {
   margin: 10px 0px;
 }
 .top-cap-header {
@@ -127,13 +130,19 @@ img {
 .top-cap-details {
   margin-top: 0px;
 }
-.each-snap {
-  /* padding: 0 10%; */
-  /* display: flex;
-  align-content: center;
-  justify-content: space-between; */
+.each-snap .row{
+  margin-bottom: 0px;
 }
-
+.snapped-by {
+  margin: 5px 0px 0px;
+}
+.snapped-by span {
+  background: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
 .top-cap-box {
   /* margin: 2em; */
   padding: .3em 1.5em;
@@ -142,7 +151,7 @@ img {
 }
 
 .caption {
-  margin: 2em 0px;
+  margin: 1em 0px;
   padding: .3em 0;
   background: #FFD216;
   color: white;
@@ -161,7 +170,7 @@ img {
 }
 
 input[type="text"] {
-  background: rgba(255,255,255,.5);
+  background: rgba(255,255,255,1);
   margin: 0px;
   max-width: 70%;
 }
@@ -173,12 +182,21 @@ input[type="text"] {
 
 .add-cap {
   margin-top: 10px;
+  background: #f7f7f7;
+  margin: 14px 0px 0px 0px;
+  padding: 12px 0px;
 }
 .add-cap div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.add-cap .top-cap-header {
+  margin-top: -12px;
+  margin-bottom: 10px;
+  justify-content: baseline;
+  padding-left: 20px;
 }
 
 </style>
