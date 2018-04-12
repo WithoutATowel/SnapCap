@@ -42,21 +42,21 @@ export default {
       }).then((response) => {
         this.newCaption = ''
         this.usercaps.push(response.data)
-        console.log('Cap created', response.data)
+        // console.log('Cap created', response.data)
       }).catch((err) => {
         console.log(err.response)
       })
     }
   },
   mounted () {
-    console.log('mounted')
+    // console.log('mounted')
     axios.get('/api/api/snaps/' + this.id + '/')
       .then((response) => {
         this.url = response.data.cloudinary_url
         this.user = response.data.user
         this.submitter = response.data.submitter
         this.usercaps = response.data.usercaps
-        console.log('here is response.data (snaps): ', response.data)
+        // console.log('here is response.data (snaps): ', response.data)
       })
   }
 }

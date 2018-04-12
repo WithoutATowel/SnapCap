@@ -30,7 +30,7 @@ export default {
       axios.get(`/api/api/user/${this.$route.params.id}/friends/`)
         .then((response) => {
           this.friends = response.data
-          console.log('here is friends', response.data)
+          // console.log('here is following list', response.data)
         })
     }
   },

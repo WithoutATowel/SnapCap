@@ -35,12 +35,12 @@ export default {
           voteCount = cap.votes
         }
       })
-      console.log('this.topCap: ', this.topCap)
+      // console.log('this.topCap: ', this.topCap)
     }
   },
   watch: {
-    snap: function(newVal, oldVal) {
-      this.getTopSnap();
+    snap: function (newVal, oldVal) {
+      this.getTopSnap()
     }
   }
 }

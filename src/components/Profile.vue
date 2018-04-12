@@ -67,15 +67,12 @@ export default {
   },
   methods: {
     getUser: function () {
-      console.log('clicked on getUser', this.id)
+      // console.log('clicked on getUser', this.id)
       axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
           this.user = response.data
-          console.log('here is profile page response.data: ', response.data)
-          console.log('here is this.user.picture_set: ', this.user.picture_set)
+          // console.log('here is profile page response.data: ', response.data)
           this.getTotalVotes()
-          console.log('route id: ', this.$route.params.id)
-          console.log('state user id: ', this.$store.state.user.id)
         })
     },
     getTotalVotes: function () {
