@@ -1,23 +1,26 @@
  <template>
   <div class="row">
-    <div class="row tabs-row">
+    <div class="tabs-row">
       <input id="all-tab" type="radio" name="tabs" v-on:click="getFeed('all')" checked>
-      <label for="all-tab" class="col s2">All</label>
+      <label for="all-tab" class="col s7ths">All</label>
+      
+      <input id="feed-tab" type="radio" name="tabs" v-on:click="getFeed(`friends/${$store.state.user.id}`)">
+      <label for="feed-tab" class="col s7ths">My Feed</label>
 
       <input id="animals-tab" type="radio" v-on:click="getFeed('animals')" name="tabs">
-      <label for="animals-tab" class="col s2">Animals</label>
+      <label for="animals-tab" class="col s7ths">Animals</label>
 
       <input id="cats-tab" type="radio" v-on:click="getFeed('cats')" name="tabs">
-      <label for="cats-tab" class="col s2">Cats</label>
+      <label for="cats-tab" class="col s7ths">Cats</label>
 
       <input id="dogs-tab" type="radio" v-on:click="getFeed('dogs')" name="tabs">
-      <label for="dogs-tab" class="col s2">Dogs</label>
+      <label for="dogs-tab" class="col s7ths">Dogs</label>
 
       <input id="sports-tab" type="radio" v-on:click="getFeed('sports')" name="tabs">
-      <label for="sports-tab" class="col s2">Sports</label>
+      <label for="sports-tab" class="col s7ths">Sports</label>
 
       <input id="hummus-tab" type="radio" v-on:click="getFeed('hummus')" name="tabs">
-      <label for="hummus-tab" class="col s2">Hummus</label>
+      <label for="hummus-tab" class="col s7ths">Hummus</label>
     </div>
     <div class='feed-snap-cont' v-for='snap in snaps' :key='snap.id'>
       <FeedSnap class='feed-snap' v-bind:snap="snap" />
@@ -86,6 +89,8 @@ input {
 }
 
 .tabs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   margin-bottom: 0px;
 }
 
@@ -110,6 +115,7 @@ label:before {
 }
 
 label[for='all-tab']:before { content: '\f036'; }
+label[for='feed-tab']:before { content: '🍜'; }
 label[for*='animals-tab']:before { content: '🐮'; }
 label[for*='cats-tab']:before { content: '🐱'; }
 label[for*='dogs-tab']:before { content: '🐶'; }

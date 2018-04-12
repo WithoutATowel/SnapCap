@@ -32,7 +32,7 @@ class PictureView(viewsets.ModelViewSet):
         username = self.request.query_params.get('username', None)
         if 'category' in self.kwargs.keys():
             if self.kwargs['category'] == 'friends':
-                friends = Friendship.objects.filter(user_id = 5)
+                friends = Friendship.objects.filter(user_id = self.kwargs['user_id'])
                 queryset = queryset.filter(user__id__in = [friend.friend_id for friend in friends])
             else:
                 queryset = queryset.filter(category = self.kwargs['category'])
@@ -57,15 +57,20 @@ class Vote_CaptionView(viewsets.ModelViewSet):
     serializer_class = Vote_CaptionSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-def index(request):
-    print('okay')
-    return render(request, 'index.html')
-
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny] # Or anon users can't register
     serializer_class = UserSerializer
     # Need to set permissions so that anyone can *sign up* but a user can only edit their own profile
+
+class FriendshipView(viewsets.ModelViewSet):
+    queryset = Friendship.objects.all()
+    serializer_class = FriendshipSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+def index(request):
+    print('okay')
+    return render(request, 'index.html')
 
 def jwt_response_payload_handler(token, user=None, request=None):
     return {
@@ -84,8 +89,35 @@ def FriendsListView(request, user_id):
     print('~~~~~~~~~~~~~~~', friends)
     return HttpResponse(json.dumps(friends), content_type='application/json')
 
-# Get a list of user's caps that includes it's votes the snap's url and user
+# Get a list of user's caps that includes each cap's votes, the snap's url, and user
 def CapsListView(request, user_id):
     usercaps = Usercap.objects.filter(user=user_id).values('id', 'picture', 'text', 'picture__cloudinary_url', 'picture__user').annotate(votes=Count('vote_caption')).order_by('-votes')
     usercaps = json.dumps(list(usercaps))
     return HttpResponse(usercaps, content_type='application/json')
+
+# Unfollow a user
+def follow(request, user_id, friend_id):
+    if request.method == 'POST':
+        friend = Friendship.objects.filter(user=user_id, friend_id=friend_id)
+        if friend.exists():
+            friend.delete()
+        else:
+            Friendship.objects.create(
+                user=User.objects.get(id=user_id),
+                friend=User.objects.get(id=friend_id),
+                status=1
+            )
+        updatedUser = User.objects.get(id=user_id)
+        updatedUser = UserSerializer(updatedUser, context={'request': request}).data
+        return HttpResponse(json.dumps(updatedUser), content_type='application/json')
+    else:
+        return HttpResponse('Invalid request method. This route expects POST requests only.')
+
+
+
+
+
+
+
+
+

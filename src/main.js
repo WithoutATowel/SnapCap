@@ -62,9 +62,11 @@ const store = new Vuex.Store({
       const payload = {
         token: this.state.jwt
       }
+      console.log('refreshToken route')
       axios.post(this.state.endpoints.refreshJWT, payload)
         .then((response) => {
-          this.commit('updateToken', response.data.token)
+          console.log('refreshtoken res', response)
+          this.commit('updateToken', {token: response.data.token, user: response.data.user})
         })
         .catch((error) => {
           console.log(error)

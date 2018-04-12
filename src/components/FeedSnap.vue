@@ -93,7 +93,7 @@ export default {
         if (!this.topCap) {
           this.topCap = response.data
         }
-        console.log('Cap created', response.data)
+        // console.log('Cap created', response.data)
       }).catch((err) => {
         console.log(err.response)
       })

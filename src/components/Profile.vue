@@ -18,7 +18,11 @@
       </div>
       <div class='col s7'>
         <!-- <h2 v-if='user' >{{ firstName() }} {{ user.last_name }}</h2> -->
-        <h2 v-if='user'>{{ user.username }}</h2>
+        <h2 v-if='user' >{{ user.username }}</h2>
+        <button v-if='$store.state.user.id !== this.$route.params.id' v-on:click="toggleFollow">
+          <span v-if='this.isFriend'>Unfollow</span>
+          <span v-else>Follow</span>
+        </button>
         <h4>Snap Points</h4>
         <p>{{ this.totalSnapVotes }}</p>
         <h4>Cap Points</h4>
@@ -62,7 +66,8 @@ export default {
     return {
       user: null,
       totalSnapVotes: 0,
-      totalCapVotes: 0
+      totalCapVotes: 0,
+      isFriend: false
     }
   },
   methods: {
@@ -73,6 +78,7 @@ export default {
           this.user = response.data
           // console.log('here is profile page response.data: ', response.data)
           this.getTotalVotes()
+          this.checkIsFriend()
         })
     },
     getTotalVotes: function () {
@@ -84,7 +90,23 @@ export default {
       this.user.picture_set.forEach(snap => {
         this.totalSnapVotes += snap.votes
       })
-    }
+    },
+    checkIsFriend: function () {
+      for (let friend of this.$store.state.user.friends) {
+        if (friend.friend === parseInt(this.$route.params.id)) {
+          this.isFriend = true
+        }
+      }
+    },
+    toggleFollow: function () {
+      axios.post(`/api/api/friends/${this.$store.state.user.id}/${this.$route.params.id}/`, {}, {
+        headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
+      }).then( (response) => {
+        this.$store.state.user = response.data
+        localStorage.u = response.data
+        this.isFriend = !this.isFriend 
+      })
+    },
   },
   watch: {
     '$route' (to, from) {
@@ -98,15 +120,9 @@ export default {
 
 <style scoped>
 
+
 img {
   max-width: 50%;
-}
-
-span {
-  display: inline-block;
-  height: 15em;
-  width: 15em;
-  background: lightblue;
 }
 
 .profile-page {
