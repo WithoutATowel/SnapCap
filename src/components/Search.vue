@@ -21,6 +21,11 @@ input {
   font-weight: bold;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: .7; /* Firefox */
+}
+
 /* input:placeholder-shown {
   color: blue;
 } */

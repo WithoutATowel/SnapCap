@@ -1,5 +1,5 @@
 <template>
-  <div class="col s3 l1">
+  <div class="col s3 l2">
     <button v-on:click="upVote( element_type )">
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>
@@ -26,7 +26,7 @@ export default {
         axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           // console.log('vote picture return data: ', result)
-          ++this.numOfVotes;
+          ++this.numOfVotes
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
             this.$modal.show('dialog', {
@@ -58,7 +58,7 @@ export default {
       if (type === 'cap') {
         axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
-          ++this.numOfVotes;
+          ++this.numOfVotes
           console.log('vote picture return data: ', result.data)
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
