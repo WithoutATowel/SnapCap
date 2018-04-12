@@ -24,13 +24,13 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FriendsList v-if='user' :id='user.id' :user_first='user.first_name' />
+        <FriendsList v-if='user' v-bind='{ id: user.id, user_first: user.first_name, }' />
       </div>
       <div class='col s4'>
-        <SnapsList v-if='user' :snaps='user.picture_set' :user_first='user.first_name' />
+        <SnapsList v-if='user' :snaps='this.user.picture_set' :user_first='this.user.first_name' />
       </div>
       <div class='col s4'>
-        <CapsList v-if='user' :id='user.id' :user_first='user.first_name' />
+        <CapsList v-if='user' :id='this.user.id' :user_first='this.user.first_name' />
       </div>
     </div>  <!-- END Bottom Profile Row -->
   </div>
@@ -82,13 +82,13 @@ export default {
         this.totalSnapVotes += snap.votes
       })
     }
-    // firstName: function () {
-    //   if (user)  {
-    //     return user.first_name
-    //   } else {
-    //     return ''
-    //   }
-    // }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (from !== to) {
+        this.getUser()
+      }
+    }
   }
 }
 </script>

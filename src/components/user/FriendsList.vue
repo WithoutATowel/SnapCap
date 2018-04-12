@@ -16,7 +16,7 @@ export default {
   mounted () {
     this.getFriendsList()
   },
-  props: ['user_first', 'id'],
+  props: ['user_first', 'id', 'getUser'],
   components: {
     Friend
   },
