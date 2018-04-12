@@ -149,5 +149,12 @@ input[type="text"] {
   justify-content: baseline;
   padding-left: 20px;
 }
-
+@media screen and (min-width: 993px) {
+  .snap-show {
+    display: flex;
+  }
+  .snap-show > div {
+    flex: 1;
+  }
+}
 </style>

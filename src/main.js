@@ -64,7 +64,7 @@ const store = new Vuex.Store({
       }
       axios.post(this.state.endpoints.refreshJWT, payload)
         .then((response) => {
-          this.commit('updateToken', response.data.token)
+          this.commit('updateToken', {token: response.data.token, user: response.data.user})
         })
         .catch((error) => {
           console.log(error)
