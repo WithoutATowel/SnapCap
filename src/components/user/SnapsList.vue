@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5>{{ user_first }}'s Snaps</h5>
+    <h5>{{ username }}'s Snaps</h5>
     <div v-for='snap in snaps'>
       <Snap class='snap' :snap='snap' />
     </div>
@@ -12,7 +12,7 @@
 import Snap from './Snap.vue'
 
 export default {
-  props: ['user_first', 'snaps'],
+  props: ['username', 'snaps'],
   components: {
     Snap
   }

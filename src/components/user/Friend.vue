@@ -3,14 +3,14 @@
     <router-link :to="{ name: 'Profile', params: { id: friend.pk } }">
       <p>go to user profile for snap ~~CHANGE THIS TO THEIR IMG~~</p>
     </router-link>
-    <p>{{ friend.fields.first_name }} {{ friend.fields.last_name }}</p>
+    <p>{{ friend.fields.username }}</p>
   </div>
 </template>
 
 <script>
 
 export default {
-  props: ['friend', 'getUser']
+  props: ['friend']
 }
 </script>
 

@@ -10,8 +10,7 @@
     <p>pic votes: {{ snap.votes }}</p>
     <p v-if='this.topCap'>"{{ this.topCap.text }}"</p>
     <p v-if='this.topCap'>number of votes: {{ this.topCap.votes }}</p>
-    <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }"><p>go to user profile for cap</p></router-link>
-    <p>ABOVE LINK DOESN'T RERENDER COMPONENT DATA</p>
+    <router-link v-if='this.topCap' :to="{ name: 'Profile', params: { id: this.topCap.user } }"><p>by {{ this.topCap.submitter }}</p></router-link>
   </div>
 </template>
 
@@ -37,6 +36,11 @@ export default {
         }
       })
       console.log('this.topCap: ', this.topCap)
+    }
+  },
+  watch: {
+    snap: function(newVal, oldVal) {
+      this.getTopSnap();
     }
   }
 }
