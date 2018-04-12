@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="col s6 login-img-cont">
-          <img src="src/assets/login.jpeg" />
+          <img src="../assets/login.jpeg" />
         </div>
       </div>
     </modal>
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="col s6 signup-img-cont">
-          <img src="src/assets/signup.jpeg" />
+          <img src="../assets/signup.jpeg" />
         </div>
       </div>
     </modal>
