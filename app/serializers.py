@@ -13,16 +13,20 @@ class ProfileSerializer(serializers.ModelSerializer):
 class UsercapSerializer(serializers.ModelSerializer):
     votes = serializers.SerializerMethodField()
     submitter = serializers.SerializerMethodField()
+    profile = serializers.SerializerMethodField()
 
     class Meta:
         model = Usercap
-        fields = ('id', 'user', 'submitter', 'picture', 'text', 'votes')
+        fields = ('id', 'user', 'submitter', 'picture', 'text', 'votes', 'profile')
 
     def get_votes(self, obj):
         return obj.vote_caption_set.count()
 
     def get_submitter(self, obj):
         return obj.user.username
+
+    def get_profile(self, obj):
+        return obj.profile.id
 
 class PictureSerializer(serializers.ModelSerializer):
     usercaps = serializers.SerializerMethodField()
@@ -86,6 +90,7 @@ class UserSerializer(serializers.ModelSerializer):
     friends = FriendshipSerializer(many=True, read_only=True, allow_null=True)
     picture_set = PictureSerializer(many=True, read_only=True, allow_null=True)
     usercap_set = UsercapSerializer(many=True, read_only=True, allow_null=True)
+    profile = ProfileSerializer(required=False)
 
     def create(self, validated_data):
         user = User.objects.create(
@@ -94,12 +99,25 @@ class UserSerializer(serializers.ModelSerializer):
             last_name=validated_data['last_name'],
             email=validated_data['email']
         )
+
+        profile = Profile.objects.create(
+            user = user,
+            profile_img = ''
+        )
+
         user.set_password(validated_data['password'])
         user.save()
         return user
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'friends', 'picture_set', 'usercap_set')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'friends', 'picture_set', 'usercap_set', 'profile')
         write_only_fields = ('password', )
         read_only_fields = ('id', )
+
+
+
+
+
+
+

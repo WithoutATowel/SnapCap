@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # How to customize your join table with extra fields, which we'll need for Cards_Users:
 # https://docs.djangoproject.com/en/dev/topics/db/models/#extra-fields-on-many-to-many-relationships
@@ -14,6 +16,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img = models.CharField(max_length=1000)
+    
 
 CATEGORY = (
     ('animals', 'animals'),

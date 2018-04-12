@@ -16,7 +16,6 @@ import json
 class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    # Need to set permissions so that a user can only edit their own
 
 class PictureView(viewsets.ModelViewSet):
     queryset = Picture.objects.filter(uploaded_date__gt=date.today()-timedelta(days=7))
