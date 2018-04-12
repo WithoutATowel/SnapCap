@@ -111,10 +111,3 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'friends', 'picture_set', 'usercap_set', 'profile')
         write_only_fields = ('password', )
         read_only_fields = ('id', )
-
-
-
-
-
-
-
