@@ -9,9 +9,7 @@
           <h5><router-link to='/'>SnapCap</router-link></h5>
         </div>
         <div class="links col s4">
-          <div class="col">
-            <Post />
-          </div>
+          <Post class="post-btn" />
           <router-link v-if="$store.state.user" :to="{ name: 'Profile', params: { id: $store.state.user.id } }">Profile</router-link>
         </div>
       </div>
@@ -71,6 +69,9 @@ a:hover {
 }
 
 .search-cont {
+  display: inline-block;
+}
+.post-btn {
   display: inline-block;
 }
 
