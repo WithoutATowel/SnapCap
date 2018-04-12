@@ -4,7 +4,7 @@
       <input id="all-tab" type="radio" name="tabs" v-on:click="getFeed('all')" checked>
       <label for="all-tab" class="col s7ths">All</label>
       
-      <input id="feed-tab" type="radio" name="tabs" v-on:click="getFeed('friends')">
+      <input id="feed-tab" type="radio" name="tabs" v-on:click="getFeed(`friends/${$store.state.user.id}`)">
       <label for="feed-tab" class="col s7ths">My Feed</label>
 
       <input id="animals-tab" type="radio" v-on:click="getFeed('animals')" name="tabs">
