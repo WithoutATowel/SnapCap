@@ -10,7 +10,7 @@
         <div class='row'>  <!-- Edit Profile Component Row -->
           <div class='col s12'>
             <UpdateProfileSection
-              v-if='parseInt(this.$route.params.id) === this.$store.state.user.id'
+              v-if='$store.state.user && parseInt(this.$route.params.id) === this.$store.state.user.id'
               v-bind='{getUser}'
             />
           </div>
@@ -19,7 +19,7 @@
       <div class='col s7'>
         <!-- <h2 v-if='user' >{{ firstName() }} {{ user.last_name }}</h2> -->
         <h2 v-if='user' >{{ user.username }}</h2>
-        <button v-if='$store.state.user.id !== this.$route.params.id' v-on:click="toggleFollow">
+        <button v-if='$store.state.user && $store.state.user.id !== this.$route.params.id' v-on:click="toggleFollow">
           <span v-if='this.isFriend'>Unfollow</span>
           <span v-else>Follow</span>
         </button>
@@ -92,9 +92,11 @@ export default {
       })
     },
     checkIsFriend: function () {
-      for (let friend of this.$store.state.user.friends) {
-        if (friend.friend === parseInt(this.$route.params.id)) {
-          this.isFriend = true
+      if (this.$store.state.user) {
+        for (let friend of this.$store.state.user.friends) {
+          if (friend.friend === parseInt(this.$route.params.id)) {
+            this.isFriend = true
+          }
         }
       }
     },

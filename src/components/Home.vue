@@ -1,11 +1,30 @@
  <template>
   <div class="row">
-    <div class="tabs-row">
+    <div class="tabs-row-7" v-if="$store.state.user">
       <input id="all-tab" type="radio" name="tabs" v-on:click="getFeed('all')" checked>
       <label for="all-tab" class="col s7ths">All</label>
       
       <input id="feed-tab" type="radio" name="tabs" v-on:click="getFeed(`friends/${$store.state.user.id}`)">
       <label for="feed-tab" class="col s7ths">My Feed</label>
+
+      <input id="animals-tab" type="radio" v-on:click="getFeed('animals')" name="tabs">
+      <label for="animals-tab" class="col s7ths">Animals</label>
+
+      <input id="cats-tab" type="radio" v-on:click="getFeed('cats')" name="tabs">
+      <label for="cats-tab" class="col s7ths">Cats</label>
+
+      <input id="dogs-tab" type="radio" v-on:click="getFeed('dogs')" name="tabs">
+      <label for="dogs-tab" class="col s7ths">Dogs</label>
+
+      <input id="sports-tab" type="radio" v-on:click="getFeed('sports')" name="tabs">
+      <label for="sports-tab" class="col s7ths">Sports</label>
+
+      <input id="hummus-tab" type="radio" v-on:click="getFeed('hummus')" name="tabs">
+      <label for="hummus-tab" class="col s7ths">Hummus</label>
+    </div>
+    <div class="tabs-row-6" v-else>
+      <input id="all-tab" type="radio" name="tabs" v-on:click="getFeed('all')" checked>
+      <label for="all-tab" class="col s7ths">All</label>
 
       <input id="animals-tab" type="radio" v-on:click="getFeed('animals')" name="tabs">
       <label for="animals-tab" class="col s7ths">Animals</label>
@@ -88,7 +107,13 @@ input {
   display: none;
 }
 
-.tabs-row {
+.tabs-row-6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 0px;
+}
+
+.tabs-row-7 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   margin-bottom: 0px;
