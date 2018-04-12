@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ChangeProfilePic />
+    <ChangeProfilePic v-bind='{getUser}' />
     <EditProfile />
   </div>
 </template>
@@ -11,7 +11,7 @@ import ChangeProfilePic from './ChangeProfilePic.vue'
 import EditProfile from './EditProfile.vue'
 
 export default {
-  // props: ['cap'],
+  props: ['getUser'],
   components: {
     ChangeProfilePic,
     EditProfile

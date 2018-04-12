@@ -9,7 +9,10 @@
         </div>
         <div class='row'>  <!-- Edit Profile Component Row -->
           <div class='col s12'>
-            <UpdateProfileSection v-if='parseInt(this.$route.params.id) === this.$store.state.user.id' />
+            <UpdateProfileSection
+              v-if='parseInt(this.$route.params.id) === this.$store.state.user.id'
+              v-bind='{getUser}'
+            />
           </div>
         </div>
       </div>

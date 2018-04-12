@@ -27,6 +27,7 @@ import axios from 'axios'
 // Cloudinary password: capthemsnaps
 
 export default {
+  props: ['getUser'],
   data () {
     return {
       user: 'NO USER',
@@ -60,7 +61,7 @@ export default {
       }, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
-        console.log('biopic updated')
+        this.getUser()
       })
     },
     show () {
