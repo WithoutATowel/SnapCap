@@ -103,6 +103,12 @@ nav .v--modal-box.v--modal form {
   background: #FFD216;
 }
 
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button.header-button {
   background: rgba(255, 255, 255, 0.51);
   border: none;
@@ -111,5 +117,4 @@ button.header-button {
 button.header-button:hover {
   background: rgb(255, 255, 255);
 }
-
 </style>

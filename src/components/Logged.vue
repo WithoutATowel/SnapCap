@@ -81,7 +81,7 @@ export default {
         console.log('signup data: ', result.data)
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
       }).catch(err => {
-        console.log(err)
+        console.log(err.response)
       })
     },
     onLoginSubmit (type) {

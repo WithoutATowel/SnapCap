@@ -1,5 +1,5 @@
 <template>
-  <div class="col s3 l1">
+  <div class="col s3 l2">
     <button v-on:click="upVote( element_type )">
       <div class="up-icon">
         <i class="fas fa-caret-circle-up"></i>

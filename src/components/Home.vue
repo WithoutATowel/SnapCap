@@ -72,6 +72,8 @@ export default {
 .feed-snap {
   padding: 1em;
   background-color: rgba(38, 232, 156, .4);
+  display: flex;
+  align-items: center;
 }
 
 .feed-snap-cont:nth-child(2) {
@@ -131,21 +133,18 @@ input:checked + label {
   label {
     font-size: 1rem;
   }
-
 }
 
 @media screen and (max-width: 875px) {
   label {
     font-size: .8rem;
   }
-
 }
 
 @media screen and (max-width: 800px) {
   label {
     font-size: .6rem;
   }
-
 }
 
 @media screen and (max-width: 700px) {
@@ -156,7 +155,6 @@ input:checked + label {
     display: block;
     margin: 0px;
   }
-
 }
 
 @media screen and (max-width: 650px) {
