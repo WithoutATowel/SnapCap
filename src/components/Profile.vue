@@ -9,7 +9,7 @@
         </div>
         <div class='row'>  <!-- Edit Profile Component Row -->
           <div class='col s12'>
-            <UpdateProfileSection />
+            <UpdateProfileSection v-if='parseInt(this.$route.params.id) === this.$store.state.user.id' />
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
     </div>  <!-- END Top Profile Row -->
     <div class='row'>  <!-- Bottom Profile Row -->
       <div class='col s4'>
-        <FriendsList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
+        <FollowersList v-if='user' v-bind='{ id: user.id, username: user.username, }' />
       </div>
       <div class='col s4'>
         <SnapsList v-if='user' :snaps='this.user.picture_set' :username='this.user.username' />
@@ -39,7 +39,7 @@
 <script>
 
 import UpdateProfileSection from './user/UpdateProfileSection'
-import FriendsList from './user/FriendsList'
+import FollowersList from './user/FollowersList'
 import SnapsList from './user/SnapsList'
 import CapsList from './user/CapsList'
 import axios from 'axios'
@@ -51,7 +51,7 @@ export default {
   props: ['id'],
   components: {
     UpdateProfileSection,
-    FriendsList,
+    FollowersList,
     SnapsList,
     CapsList
   },
@@ -71,6 +71,8 @@ export default {
           console.log('here is profile page response.data: ', response.data)
           console.log('here is this.user.picture_set: ', this.user.picture_set)
           this.getTotalVotes()
+          console.log('route id: ', this.$route.params.id)
+          console.log('state user id: ', this.$store.state.user.id)
         })
     },
     getTotalVotes: function () {
@@ -95,6 +97,10 @@ export default {
 </script>
 
 <style scoped>
+
+img {
+  max-width: 50%;
+}
 
 span {
   display: inline-block;

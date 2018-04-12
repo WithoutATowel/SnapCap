@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Update Profile Section Component</p>
     <ChangeProfilePic />
     <EditProfile />
   </div>

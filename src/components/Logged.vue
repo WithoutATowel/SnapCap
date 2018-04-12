@@ -5,7 +5,9 @@
       <button v-on:click="show('signup')" class="header-button">Signup</button></p>
     <div v-if="$store.state.user">
       <button v-on:click="logout" class="header-button">Logout</button> |
-      <p class='username'>{{ $store.state.user.username }}</p>
+      <router-link :to="{ name: 'Profile', params: { id: $store.state.user.id } }">
+        <p class='username'>{{ $store.state.user.username }}</p>
+      </router-link>
     </div>
 
     <modal name="login">
