@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getFriendsList: function () {
-      axios.get(`/api/api/user/${this.$route.params.id}/friends/`)
+      axios.get(`/api/user/${this.$route.params.id}/friends/`)
         .then((response) => {
           this.friends = response.data
         })

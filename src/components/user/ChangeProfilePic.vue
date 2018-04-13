@@ -55,7 +55,7 @@ export default {
       })
     },
     updateBioPic (url) {
-      axios.put(`/api/api/profile/${this.$store.state.user.profile.id}/`, {
+      axios.put(`/api/profile/${this.$store.state.user.profile.id}/`, {
         user: this.$store.state.user.id,
         profile_img: url
       }, {

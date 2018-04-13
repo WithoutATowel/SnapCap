@@ -66,12 +66,12 @@ export default {
   methods: {
     getFeed: function (category) {
       if (category === 'all') {
-        axios.get('/api/api/snaps/')
+        axios.get('/api/snaps/')
           .then((response) => {
             this.snaps = response.data
           })
       } else {
-        axios.get('/api/api/snaps/' + category + '/')
+        axios.get('/api/snaps/' + category + '/')
           .then((response) => {
             this.snaps = response.data
           })
@@ -79,7 +79,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/api/snaps/')
+    axios.get('/api/snaps/')
       .then((response) => {
         this.snaps = response.data
       })

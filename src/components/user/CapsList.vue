@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getCapsList: function () {
-      axios.get(`/api/api/user/${this.$route.params.id}/caps/`)
+      axios.get(`/api/user/${this.$route.params.id}/caps/`)
         .then((response) => {
           this.usercaps = response.data
         })

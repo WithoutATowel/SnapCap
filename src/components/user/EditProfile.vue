@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     onEditSubmit () {
-      axios.post('/api/api/users/', this.edit).then(result => {
+      axios.post('/api/users/', this.edit).then(result => {
         this.$modal.hide('edit')
         this.$store.dispatch('obtainToken', [result.data.username, this.edit.password])
       }).catch(err => {

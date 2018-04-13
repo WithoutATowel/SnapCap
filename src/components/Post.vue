@@ -58,7 +58,7 @@ export default {
       })
     },
     postSnap (url, category) {
-      axios.post('/api/api/snaps/', {
+      axios.post('/api/snaps/', {
         user: this.$store.state.user.id,
         cloudinary_url: url,
         category: category

@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     getUser: function () {
-      axios.get(`/api/api/users/${this.id}/`)
+      axios.get(`/api/users/${this.id}/`)
         .then((response) => {
           this.user = response.data
           this.getTotalVotes()
@@ -99,7 +99,7 @@ export default {
       }
     },
     toggleFollow: function () {
-      axios.post(`/api/api/friends/${this.$store.state.user.id}/${this.$route.params.id}/`, {}, {
+      axios.post(`/api/friends/${this.$store.state.user.id}/${this.$route.params.id}/`, {}, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
         this.$store.state.user = response.data

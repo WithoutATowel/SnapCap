@@ -80,7 +80,7 @@ export default {
       })
     },
     submitCap () {
-      axios.post('/api/api/caps/', {
+      axios.post('/api/caps/', {
         user: this.$store.state.user.id,
         picture: this.snap.id,
         text: this.newCaption,

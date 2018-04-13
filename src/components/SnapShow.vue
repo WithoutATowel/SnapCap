@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     submitCap () {
-      axios.post('/api/api/caps/', {
+      axios.post('/api/caps/', {
         user: this.$store.state.user.id,
         picture: this.id,
         text: this.newCaption,
@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/api/snaps/' + this.id + '/')
+    axios.get('/api/snaps/' + this.id + '/')
       .then((response) => {
         this.url = response.data.cloudinary_url
         this.user = response.data.user

@@ -79,21 +79,21 @@ export default {
   },
   methods: {
     onSignupSubmit () {
-      axios.post('/api/api/users/', this.signup).then(result => {
+      axios.post('/api/users/', this.signup).then(result => {
         this.$modal.hide('signup')
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
         let profilePicUrl = 'https://www.avatarapi.com/js.aspx?email=' + result.data.email + '&size=200'
         axios.get(profilePicUrl).then(response => {
           var profilePic = response.data.match(/(https?:\/\/[^\s']+)/g) ? response.data.match(/(https?:\/\/[^\s']+)/g)[1] : null
           if (profilePic) {
-            axios.put('api/api/profile/' + result.data.profile.id + '/', {
+            axios.put('/api/profile/' + result.data.profile.id + '/', {
               user: result.data.id,
               profile_img: profilePic
             }, {
               headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
             })
           } else {
-            axios.put('api/api/profile/' + result.data.profile.id + '/', {
+            axios.put('/api/profile/' + result.data.profile.id + '/', {
               user: result.data.id,
               profile_img: 'http://www.everythingjustrocks.com/wp-content/uploads/default.png'
             }, {
