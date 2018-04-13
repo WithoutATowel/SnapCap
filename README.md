@@ -22,12 +22,16 @@ SnapCap live site: https://snapcap-app.herokuapp.com/
 ## Technologies Used
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
 
+- Vue.js
+- Django
+- Django REST framework
+- PostgreSQL
+- JWT authentication
 - HTML5 / CSS3
 - JavaScript
-- Materialize?
+- Materialize
 - Python
-- Django
-- Vue.js
+
 
 
 ## Routes
