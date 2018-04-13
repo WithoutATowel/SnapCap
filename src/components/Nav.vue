@@ -8,7 +8,7 @@
         <div class="col s4">
           <h5><router-link to='/' id="snap-cap">SnapCap</router-link></h5>
         </div>
-        <div class="links col s4">
+        <div class="links col s4" v-if="$store.state.user">
           <Post class="post-btn" /> |
           <router-link v-if="$store.state.user" :to="{ name: 'Profile', params: { id: $store.state.user.id } }">Profile</router-link>
         </div>
