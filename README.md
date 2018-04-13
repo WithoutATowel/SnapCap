@@ -122,7 +122,9 @@ We have a lot of work to finish up on SnapCap.
 1. We should probably choose a different name so we don't get sued.
 2. The site needs a lot of styling work.
 3. We'd like to add a random caption generator, so less creative types can play.
-4. Point bonuses for top snaps & top caps. 
+4. Point bonuses for top snaps & top caps.
+5. Make it easier to tell what you've already voted for.
+6. Get rid of snap upvotes and give posters points based on caption upvotes.
 
 <!-- # snapcap
 
