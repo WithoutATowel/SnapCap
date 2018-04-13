@@ -2,7 +2,7 @@
 
 [SnapCap](http://) is a web app for posting pictures for people to caption. It was created for Project 4 at General Assembly, WDI-17 and is hosted on Heroku at:
 
-SnapCap live site: https://
+SnapCap live site: https://snapcap-app.herokuapp.com/
 
 ### Jump to...
 
@@ -94,13 +94,14 @@ SnapCap live site: https://
 ## APIs Used
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
 - [Avatar API](https://www.avatarapi.com)
+- [Cloudinary] (https://cloudinary.com/)
 
 ## User Stories
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
 
-1.
-2.
-3.
+1. As an internet troll, I want to make fun of people anonymously.
+2. As a teenager I take pictures constantly, and would love to have another website to post them on!
+3. As an adult living in my parents' basement, internet points are extremely important to me. Now I can earn even more!
 
 ## About the project
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
@@ -109,23 +110,15 @@ DESCRIPTION HERE
 
 ## Wireframes
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
-
-<!-- ![Landing page wireframe](readme-images/1.jpg) -->
-
-
+In a bold change of strategy, we elected to *not* draw wireframes. Instead, we dove straight into building sweet, sweet features.
 
 ## Next Steps
 [to the top](https://github.com/WithoutATowel/SnapCap#snapcap)
-
-
-
-
-
-
-
-
-
-
+We have a lot of work to finish up on SnapCap.
+1. We should probably choose a different name so we don't get sued.
+2. The site needs a lot of styling work.
+3. We'd like to add a random caption generator, so less creative types can play.
+4. Point bonuses for top snaps & top caps. 
 
 <!-- # snapcap
 
