@@ -79,8 +79,13 @@ export default {
   },
   methods: {
     onSignupSubmit () {
+      this.$modal.hide('signup')
       axios.post('/api/users/', this.signup).then(result => {
-        this.$modal.hide('signup')
+        this.$toasted.show('You Are Now Signed Up!', {
+           theme: "primary",
+           position: "top-right",
+           duration : 3000
+        })
         this.$store.dispatch('obtainToken', [result.data.username, this.signup.password])
         let profilePicUrl = 'https://www.avatarapi.com/js.aspx?email=' + result.data.email + '&size=200'
         axios.get(profilePicUrl).then(response => {
@@ -103,6 +108,23 @@ export default {
         })
       }).catch(err => {
         console.log(err.response)
+        this.$toasted.error('Oops, something went wrong!', {
+           theme: "primary",
+           position: "top-right",
+           duration : 3000
+        })
+        if (err.response.data.non_field_errors[0] === 'That username already exists, bro') {
+          this.$modal.show('dialog', {
+            title: 'Alert!',
+            text: 'That username already exists 😬',
+            buttons: [
+              {
+                title: 'OK',
+                default: true
+              }
+            ]
+          })
+        }
       })
     },
     onLoginSubmit (type) {
@@ -130,6 +152,7 @@ export default {
   .username {
     display: inline-block;
     font-size: 1.2rem;
+    color: #fff;
   }
   .login-img-cont, .signup-img-cont {
     display: flex;

@@ -26,29 +26,24 @@ export default {
         axios.post('/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           ++this.numOfVotes
+          this.$toasted.success("Snap UpVoted!", {
+             theme: "primary",
+             position: "top-right",
+             duration : 3000
+          })
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
-            this.$modal.show('dialog', {
-              title: 'Alert!',
-              text: 'You are only allowed to vote once per post.',
-              buttons: [
-                {
-                  title: 'OK',
-                  default: true
-                }
-              ]
+            this.$toasted.error("You are only allowed to vote once per post.", {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
             })
           }
           if (err.response.data.non_field_errors[0] === 'Signature has expired.') {
-            this.$modal.show('dialog', {
-              title: 'Alert!',
-              text: 'You need to be logged in to do that',
-              buttons: [
-                {
-                  title: 'OK',
-                  default: true
-                }
-              ]
+            this.$toasted.error("You need to be logged in to do that", {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
             })
           }
           console.log(err.response)
@@ -58,29 +53,24 @@ export default {
         axios.post('/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           ++this.numOfVotes
+          this.$toasted.success("Caption UpVoted!", {
+             theme: "primary",
+             position: "top-right",
+             duration : 3000
+          });
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
-            this.$modal.show('dialog', {
-              title: 'Alert!',
-              text: 'You are only allowed to vote once per post.',
-              buttons: [
-                {
-                  title: 'OK',
-                  default: true
-                }
-              ]
+            this.$toasted.error("You are only allowed to vote once per post.", {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
             })
           }
           if (err.response.data.non_field_errors[0] === 'Signature has expired.') {
-            this.$modal.show('dialog', {
-              title: 'Alert!',
-              text: 'You need to be logged in to do that',
-              buttons: [
-                {
-                  title: 'OK',
-                  default: true
-                }
-              ]
+            this.$toasted.error("You need to be logged in to do that", {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
             })
           }
           console.log(err.response)

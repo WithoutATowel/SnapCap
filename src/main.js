@@ -10,6 +10,12 @@ import VueAxios from 'vue-axios'
 import jwtDecode from 'jwt-decode'
 import Vuex from 'vuex'
 import VModal from 'vue-js-modal'
+import Toasted from 'vue-toasted';
+
+Vue.use(Toasted)
+//
+// // you can also pass options, check options reference below
+// Vue.use(Toasted, Options)
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
@@ -20,8 +26,11 @@ const store = new Vuex.Store({
     jwt: localStorage.getItem('t'),
     user: localStorage.getItem('u'),
     endpoints: {
+      // heroku
       obtainJWT: 'https://snapcap-app.herokuapp.com/auth/obtain_token/',
       refreshJWT: 'https://snapcap-app.herokuapp.com/auth/refresh_token/'
+      // obtainJWT: 'http://localhost:8000/auth/obtain_token/',
+      // refreshJWT: 'http://localhost:8000/auth/refresh_token/'
     }
   },
   mutations: {
@@ -47,9 +56,27 @@ const store = new Vuex.Store({
       axios.post(this.state.endpoints.obtainJWT, payload)
         .then((response) => {
           this.commit('updateToken', {token: response.data.token, user: response.data.user})
+          Vue.toasted.show('Logged In', {
+             theme: "primary",
+             position: "top-right",
+             duration : 3000
+          })
         })
-        .catch((error) => {
-          console.log(error)
+        .catch((err) => {
+          console.log(err.response)
+          if (err.response.data.non_field_errors[0] === 'Unable to log in with provided credentials.') {
+            Vue.toasted.error('Your username and password don\'t match', {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
+            })
+          } else {
+            Vue.toasted.error(err.response.data, {
+               theme: "primary",
+               position: "top-right",
+               duration : 3000
+            })
+          }
         })
     },
     refreshToken () {
@@ -81,6 +108,11 @@ const store = new Vuex.Store({
     },
     logout () {
       this.commit('removeToken')
+      Vue.toasted.show('Logged Out', {
+         theme: "primary",
+         position: "top-right",
+         duration : 3000
+      })
     }
   }
 })
