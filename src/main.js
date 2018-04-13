@@ -20,8 +20,8 @@ const store = new Vuex.Store({
     jwt: localStorage.getItem('t'),
     user: localStorage.getItem('u'),
     endpoints: {
-      obtainJWT: 'http://localhost:8000/api/auth/obtain_token/',
-      refreshJWT: 'http://localhost:8000/api/auth/refresh_token/'
+      obtainJWT: 'https://snapcap-app.herokuapp.com/auth/obtain_token/',
+      refreshJWT: 'https://snapcap-app.herokuapp.com/auth/refresh_token/'
     }
   },
   mutations: {
