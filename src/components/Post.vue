@@ -65,6 +65,12 @@ export default {
       }, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
+        this.category = ''
+        this.$toasted.success("Your post has been added!", {
+        	 theme: "primary",
+        	 position: "top-right",
+        	 duration : 3000
+        })
       })
     },
     show () {

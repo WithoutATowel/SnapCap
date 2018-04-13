@@ -102,6 +102,19 @@ export default {
       axios.post(`/api/friends/${this.$store.state.user.id}/${this.$route.params.id}/`, {}, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
+        if (this.isFriend !== true) {
+          this.$toasted.success(`Now Following`, {
+          	 theme: "primary",
+          	 position: "top-right",
+          	 duration : 3000
+          })
+        } else {
+          this.$toasted.show(`Unfollowed`, {
+          	 theme: "primary",
+          	 position: "top-right",
+          	 duration : 3000
+          })
+        }
         this.$store.state.user = response.data
         localStorage.u = response.data
         this.isFriend = !this.isFriend

@@ -53,8 +53,18 @@ export default {
       }).then((response) => {
         this.newCaption = ''
         this.usercaps.push(response.data)
+        this.$toasted.success('Your caption has been added!', {
+           theme: "primary",
+           position: "top-right",
+           duration : 3000
+        })
       }).catch((err) => {
         console.log(err.response)
+        this.$toasted.error('Something went wrong', {
+           theme: "primary",
+           position: "top-right",
+           duration : 3000
+        })
       })
     }
   },
