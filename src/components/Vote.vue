@@ -25,7 +25,6 @@ export default {
       if (type === 'snap') {
         axios.post('/api/api/vote_picture/', {user: this.$store.state.user.id, picture: this.snap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
-          // console.log('vote picture return data: ', result)
           ++this.numOfVotes
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
@@ -59,7 +58,6 @@ export default {
         axios.post('/api/api/vote_caption/', {user: this.$store.state.user.id, picture: this.snap_id, usercap: this.cap_id}, {headers: {'Authorization': 'JWT ' + this.$store.state.jwt}})
         .then(result => {
           ++this.numOfVotes
-          console.log('vote picture return data: ', result.data)
         }).catch(err => {
           if (err.response.data.non_field_errors[0] === 'The fields user, picture must make a unique set.') {
             this.$modal.show('dialog', {

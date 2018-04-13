@@ -65,7 +65,6 @@ export default {
       }, {
         headers: {'Authorization': 'JWT ' + this.$store.state.jwt}
       }).then((response) => {
-        // console.log('Snap created')
       })
     },
     show () {

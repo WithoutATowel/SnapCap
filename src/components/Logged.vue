@@ -70,7 +70,6 @@ export default {
         'last_name': '',
         'email': '',
         'password': ''
-        // 'profile': {"user":'', "profile_img":''}
       },
       login: {
         'username': '',

@@ -7,11 +7,6 @@ from django.dispatch import receiver
 # How to customize your join table with extra fields, which we'll need for Cards_Users:
 # https://docs.djangoproject.com/en/dev/topics/db/models/#extra-fields-on-many-to-many-relationships
 
-# User model base fields:
-# https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User
-# How to extend the User model:
-# https://docs.djangoproject.com/en/dev/topics/auth/customizing/#extending-the-existing-user-model
-
 # Extends the user model via a 1:1 mapping
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

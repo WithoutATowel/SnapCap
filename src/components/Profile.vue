@@ -72,11 +72,9 @@ export default {
   },
   methods: {
     getUser: function () {
-      // console.log('clicked on getUser', this.id)
       axios.get(`/api/api/users/${this.id}/`)
         .then((response) => {
           this.user = response.data
-          // console.log('here is profile page response.data: ', response.data)
           this.getTotalVotes()
           this.checkIsFriend()
         })

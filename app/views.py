@@ -22,12 +22,7 @@ class PictureView(viewsets.ModelViewSet):
     serializer_class = PictureSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    # Get all the snaps that have a cap with a given word or phrase
-    # matching_caps = Usercap.objects.filter(text__icontains = 'oh')
-    # Picture.objects.filter(id__in = [cap.picture.id for cap in matching_caps])
-
     def get_queryset(self):
-        # __icontains() for cap text + search?
         queryset = Picture.objects.all().filter(uploaded_date__gt=date.today()-timedelta(days=7))
         username = self.request.query_params.get('username', None)
         if 'category' in self.kwargs.keys():
@@ -82,11 +77,7 @@ def jwt_response_payload_handler(token, user=None, request=None):
 def FriendsListView(request, user_id):
     friend_ids = Friendship.objects.filter(user=user_id)
     friends = User.objects.filter(id__in = [friend.friend.id for friend in friend_ids])
-    print('########################################', friends)
-    # foo = Profile.objects.filter(user_id__in = [friend.friend.id for friend in friend_ids])
-    # friends = serializers.serialize('json', list(friends), fields=('id', 'username', 'profile_img'))
     friends = [UserSerializer(friend).data for friend in friends]
-    print('~~~~~~~~~~~~~~~', friends)
     return HttpResponse(json.dumps(friends), content_type='application/json')
 
 # Get a list of user's caps that includes each cap's votes, the snap's url, and user

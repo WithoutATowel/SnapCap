@@ -26,7 +26,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     updateToken (state, newToken) {
-      // console.log('t:', newToken.token, '  u: ', newToken.user)
       localStorage.setItem('t', newToken.token)
       localStorage.setItem('u', JSON.stringify(newToken.user))
       state.jwt = newToken.token
@@ -41,18 +40,13 @@ const store = new Vuex.Store({
   },
   actions: {
     obtainToken (context, usernamePass) {
-      console.log('username: ', usernamePass[0], 'Password: ', usernamePass[1])
       const payload = {
         'username': usernamePass[0],
         'password': usernamePass[1]
       }
-      console.log('payload: ', payload)
       axios.post(this.state.endpoints.obtainJWT, payload)
         .then((response) => {
           this.commit('updateToken', {token: response.data.token, user: response.data.user})
-          console.log(response.data)
-          // console.log(response.data.user)
-          // console.log(response.data.token)
         })
         .catch((error) => {
           console.log(error)
@@ -62,7 +56,6 @@ const store = new Vuex.Store({
       const payload = {
         token: this.state.jwt
       }
-      console.log('refreshToken route')
       axios.post(this.state.endpoints.refreshJWT, payload)
         .then((response) => {
           this.commit('updateToken', {token: response.data.token, user: response.data.user})

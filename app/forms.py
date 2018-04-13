@@ -1,12 +1,6 @@
 from django import forms
-# from .models import Cat
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
-# class CatForm(forms.ModelForm):
-#     class Meta:
-#         model = Cat
-#         fields = ('name', 'breed', 'description', 'age')
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="User Name", max_length=64)

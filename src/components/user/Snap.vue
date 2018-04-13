@@ -35,7 +35,6 @@ export default {
           voteCount = cap.votes
         }
       })
-      // console.log('this.topCap: ', this.topCap)
     }
   },
   watch: {

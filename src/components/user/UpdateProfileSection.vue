@@ -8,13 +8,13 @@
 <script>
 
 import ChangeProfilePic from './ChangeProfilePic.vue'
-import EditProfile from './EditProfile.vue'
+// import EditProfile from './EditProfile.vue'
 
 export default {
   props: ['getUser'],
   components: {
-    ChangeProfilePic,
-    EditProfile
+    ChangeProfilePic
+    // EditProfile
   }
 }
 </script>

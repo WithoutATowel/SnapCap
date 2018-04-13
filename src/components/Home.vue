@@ -69,13 +69,11 @@ export default {
         axios.get('/api/api/snaps/')
           .then((response) => {
             this.snaps = response.data
-            // console.log('here is response.data (snaps): ', response.data)
           })
       } else {
         axios.get('/api/api/snaps/' + category + '/')
           .then((response) => {
             this.snaps = response.data
-            // console.log('here is response.data (snaps): ', response.data)
           })
       }
     }

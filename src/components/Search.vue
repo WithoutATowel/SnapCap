@@ -26,8 +26,4 @@ input {
     opacity: .7; /* Firefox */
 }
 
-/* input:placeholder-shown {
-  color: blue;
-} */
-
 </style>
