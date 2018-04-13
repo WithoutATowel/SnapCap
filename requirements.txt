@@ -5,3 +5,5 @@ django-nose==1.4.5
 djangorestframework==3.8.2
 djangorestframework-jwt==1.11.0
 psycopg2==2.7.4
+gunicorn==19.7.1
+django-heroku==0.3.1

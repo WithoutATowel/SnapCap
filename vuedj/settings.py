@@ -163,3 +163,5 @@ JWT_AUTH = {
     'app.views.jwt_response_payload_handler',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=86400),
 }
+
+django_heroku.settings(locals())
