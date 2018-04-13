@@ -6,10 +6,10 @@
           <Logged />
         </div>
         <div class="col s4">
-          <h5><router-link to='/'>SnapCap</router-link></h5>
+          <h5><router-link to='/' id="snap-cap">SnapCap</router-link></h5>
         </div>
         <div class="links col s4">
-          <Post class="post-btn" />
+          <Post class="post-btn" /> |
           <router-link v-if="$store.state.user" :to="{ name: 'Profile', params: { id: $store.state.user.id } }">Profile</router-link>
         </div>
       </div>
@@ -37,9 +37,6 @@ h1 {
   color: #42b983;
 }
 
-a {
-  margin: 0 10px;
-}
 .col {
   text-align: center;
 }
@@ -51,6 +48,7 @@ nav {
 
 a {
   padding: .2em .1em;
+  margin: 0 10px;
   color: white !important;
 }
 
@@ -58,11 +56,18 @@ a:hover {
   border-bottom: 2px solid #FFD216;
 }
 
-.search-cont {
-  display: inline-block;
-}
 .post-btn {
   display: inline-block;
+}
+
+#snap-cap {
+  font-family: 'Gamja Flower', cursive;
+  font-size: 1.5em;
+}
+
+#snap-cap:hover {
+  border-bottom: none;
+  font-weight: bold;
 }
 
 </style>
