@@ -23,7 +23,8 @@ class PictureView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        queryset = Picture.objects.all().filter(uploaded_date__gt=date.today()-timedelta(days=7))
+        # queryset = Picture.objects.all().filter(uploaded_date__gt=date.today()-timedelta(days=7))
+        queryset = Picture.objects.all()
         username = self.request.query_params.get('username', None)
         if 'category' in self.kwargs.keys():
             if self.kwargs['category'] == 'friends':
@@ -103,12 +104,3 @@ def follow(request, user_id, friend_id):
         return HttpResponse(json.dumps(updatedUser), content_type='application/json')
     else:
         return HttpResponse('Invalid request method. This route expects POST requests only.')
-
-
-
-
-
-
-
-
-
