@@ -18,7 +18,8 @@ class ProfileView(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
 
 class PictureView(viewsets.ModelViewSet):
-    queryset = Picture.objects.filter(uploaded_date__gt=date.today()-timedelta(days=7))
+    # queryset = Picture.objects.filter(uploaded_date__gt=date.today()-timedelta(days=7))
+    queryset = Picture.objects
     serializer_class = PictureSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
